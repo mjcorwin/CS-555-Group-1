@@ -1,5 +1,4 @@
 from os import path
-from tkinter.font import families
 from prettytable import PrettyTable
 from datetime import datetime
 import copy
