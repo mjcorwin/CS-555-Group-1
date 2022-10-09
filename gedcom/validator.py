@@ -1,6 +1,4 @@
 from datetime import datetime
-from .family import Family
-from .individual import Individual
 
 
 def validate(individuals, families):
