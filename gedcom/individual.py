@@ -33,13 +33,13 @@ class Individual:
             variable_name = self.GEDCOM_TAG_VARIABLE_MAPPING[tag]
         else:
             variable_name = self.GEDCOM_TAG_VARIABLE_MAPPING[last_tag] + "_date"
-            args = datetime.strptime(args, "%d %b %Y")
+            args = datetime.strptime(args, "%d %b %Y").date()
 
         # Dynamically set attribute based on mapping
         setattr(self, variable_name, args)
 
     def age(self):
-        age_date = self.death_date or datetime.now()
+        age_date = self.death_date or datetime.now().date()
 
         return int(timedelta_to_years(age_date - self.birth_date))
 

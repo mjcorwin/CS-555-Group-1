@@ -30,7 +30,7 @@ def print_individuals(individuals, sort=True):
                 i.alive(),
                 datetime.strftime(i.death_date, DATE_FORMAT) if i.death_date else "N/A",
                 f"{{'{i.family_child}'}}" if i.family_child else "N/A",
-                f"{{'{i.family_spouse}'}}" if i.family_spouse else "N?A",
+                f"{{'{i.family_spouse}'}}" if i.family_spouse else "N/A",
             ]
         )
 
