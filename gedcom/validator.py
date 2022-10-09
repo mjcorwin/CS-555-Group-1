@@ -46,16 +46,18 @@ def US02(individuals, families):
 
     for f in families.values():
         married_date = f.married_date
+        if not married_date:
+            continue
 
-        husband = individuals[f.husband_id]
-        wife = individuals[f.wife_id]
+        husband = individuals.get(f.husband_id)
+        wife = individuals.get(f.wife_id)
 
-        if husband and husband.birth_date > married_date:
+        if husband and husband.birth_date and husband.birth_date > married_date:
             errors.append(
                 f"ERROR: INDIVIDUAL: US02: {husband.id}: Birthday {husband.birth_date} occurs after Marriage {married_date}"
             )
 
-        if wife and wife.birth_date > married_date:
+        if wife and wife.birth_date and wife.birth_date > married_date:
             errors.append(
                 f"ERROR: INDIVIDUAL: US02: {wife.id}: Birthday {wife.birth_date} occurs after Marriage {married_date}"
             )
