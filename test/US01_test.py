@@ -100,3 +100,15 @@ class TestUS01:
         family.divorced_date = today
         errors = validator.US01({}, {family.id: family})
         assert len(errors) == 0
+
+    def test_individual_both_dates_greater_than_today(self, individual, future_date):
+        individual.birth_date = future_date
+        individual.death_date = future_date
+        errors = validator.US01({individual.id: individual}, {})
+        assert len(errors) == 2
+
+    def test_family_both_dates_greater_than_today(self, family, future_date):
+        family.married_date = future_date
+        family.divorced_date = future_date
+        errors = validator.US01({}, {family.id: family})
+        assert len(errors) == 2
