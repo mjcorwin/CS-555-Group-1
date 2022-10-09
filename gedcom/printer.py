@@ -79,5 +79,4 @@ def print_families(families, individuals, sort=True):
 
 
 def timedelta_to_years(delta):
-    seconds_in_year = 365.25 * 24 * 60 * 60
-    return int(delta.total_seconds() / seconds_in_year)
+    return int(delta.total_seconds() / SECONDS_IN_YEAR)
