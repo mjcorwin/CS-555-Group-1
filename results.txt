@@ -15,3 +15,5 @@ FAMILIES
 +-----+------------+----------+------------+--------------+---------+------------------+----------------+
 VALIDATIONS
 ERROR: INDIVIDUAL: US01: I01: Birthday 2030-07-15 occurs in the future
+ERROR: INDIVIDUAL: US02: I01: Birthday 2030-07-15 occurs after Marriage 1950-02-14
+ERROR: INDIVIDUAL: US02: I07: Birthday 1960-09-23 occurs after Marriage 1950-02-14

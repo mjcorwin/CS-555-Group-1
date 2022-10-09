@@ -43,4 +43,26 @@ def US01(individuals, families):
     return errors
 
 
-VALIDATION_LIST = [US01]
+def US02(individuals, families):
+    errors = []
+
+    for f in families.values():
+        married_date = f.married_date
+
+        husband = individuals[f.husband_id]
+        wife = individuals[f.wife_id]
+
+        if husband and husband.birth_date > married_date:
+            errors.append(
+                f"ERROR: INDIVIDUAL: US02: {husband.id}: Birthday {husband.birth_date} occurs after Marriage {married_date}"
+            )
+
+        if wife and wife.birth_date > married_date:
+            errors.append(
+                f"ERROR: INDIVIDUAL: US02: {wife.id}: Birthday {wife.birth_date} occurs after Marriage {married_date}"
+            )
+
+    return errors
+
+
+VALIDATION_LIST = [US01, US02]
