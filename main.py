@@ -3,6 +3,7 @@ from os import path
 from gedcom import printer
 from gedcom.parser import Parser
 
+from gedcom import Tests;
 
 INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input.gedcom")
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
@@ -30,6 +31,11 @@ def main():
         outfile.write("\nFAMILIES\n")
         outfile.write(family_table)
 
+    Run_Tests(parser);
+
+def Run_Tests(hParser):
+    Tests.US03.US03_Test(hParser);
+    Tests.US03.US03_DisplayResults();
 
 if __name__ == "__main__":
     main()
