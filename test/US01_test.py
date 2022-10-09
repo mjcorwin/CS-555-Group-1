@@ -32,8 +32,6 @@ def family():
     return Family("F" + str(random.randint(0, 10000)))
 
 
-# TODO: Without date
-# TODO: >, <, = for all dates
 class TestUS01:
     def test_individual_without_dates(self, individual):
         errors = validator.US01({individual.id: individual}, {})
