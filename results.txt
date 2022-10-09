@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDIVIDUALS
 +-----+------------------+--------+------------+-----+-------+------------+---------+---------+
 |  ID |       Name       | Gender |  Birthday  | Age | Alive |   Death    |  Child  |  Spouse |

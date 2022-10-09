@@ -86,3 +86,7 @@ def US03_DisplayResults():
 
     print (pt.get_string());
     return pt.get_string();
+
+def Execute(hParser):
+    US03_Test(hParser);
+    return US03_DisplayResults();

@@ -26,22 +26,22 @@ def main():
         print(individuals_table)
         print("FAMILIES")
         print(family_table)
-        print("VALIDATIONS")
-        print(validations)
+        #print("VALIDATIONS")
+        #print(validations)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
         outfile.write("\nFAMILIES\n")
         outfile.write(family_table)
-        outfile.write("\nVALIDATIONS\n")
-        outfile.write(validations)
-        outfile.write("\n")
+        #outfile.write("\nVALIDATIONS\n")
+        #outfile.write(validations)
+        #outfile.write("\n")
 
     Run_Tests(parser);
 
 def Run_Tests(hParser):
-    Tests.US03.US03_Test(hParser);
-    Tests.US03.US03_DisplayResults();
+    Tests.US03.Execute(hParser);
+    Tests.US04.Execute(hParser);
 
 if __name__ == "__main__":
     main()
