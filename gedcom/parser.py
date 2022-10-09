@@ -35,31 +35,30 @@ class Parser:
         last_record = None
         last_tag = None
 
-        with open(self.file) as f:
-            for line in f:
-                line = line.strip()
+        for line in self.file:
+            line = line.strip()
 
-                (level, tag, args) = self.tokenize(line)
+            (level, tag, args) = self.tokenize(line)
 
-                # For now we skip invalid records ignoring args
-                # Not all tags require arguments
-                if not self.is_valid(level, tag):
-                    continue
+            # For now we skip invalid records ignoring args
+            # Not all tags require arguments
+            if not self.is_valid(level, tag):
+                continue
 
-                # If we see level 0, we know a record is being created or finished
-                if level == 0:
-                    self.save(last_record)
-                    last_record = None
-                    last_tag = None
+            # If we see level 0, we know a record is being created or finished
+            if level == 0:
+                self.save(last_record)
+                last_record = None
+                last_tag = None
 
-                    # Create new records
-                    if tag == "INDI":
-                        last_record = Individual(args)
-                    elif tag == "FAM":
-                        last_record = Family(args)
-                else:
-                    last_record.track(level, tag, args, last_tag)
-                    last_tag = tag
+                # Create new records
+                if tag == "INDI":
+                    last_record = Individual(args)
+                elif tag == "FAM":
+                    last_record = Family(args)
+            else:
+                last_record.track(level, tag, args, last_tag)
+                last_tag = tag
 
         # Save end state if no other 0 record is encountered
         self.save(last_record)

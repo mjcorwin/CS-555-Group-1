@@ -30,7 +30,7 @@ class Family:
             variable_name = self.GEDCOM_TAG_VARIABLE_MAPPING[tag]
         else:
             variable_name = self.GEDCOM_TAG_VARIABLE_MAPPING[last_tag] + "_date"
-            args = datetime.strptime(args, "%d %b %Y")
+            args = datetime.strptime(args, "%d %b %Y").date()
 
         # CHIL is a special tag as it is stored as a list
         if tag == "CHIL":
