@@ -42,6 +42,7 @@ def main():
 def Run_Tests(hParser):
     Tests.US03.Execute(hParser);
     Tests.US04.Execute(hParser);
+    Tests.US07.Execute(hParser);
 
 if __name__ == "__main__":
     main()
