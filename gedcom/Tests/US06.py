@@ -52,19 +52,19 @@ def US06_Test(hParser):
 
             else:
             # No birth...
-                if (hFamily.married == True and hFamily.divorced == None):
+                if (hFamily.married == True):
                     NewFailureEntry = cUS06_Failure();
                     NewFailureEntry.hFamily = hFamily;
                     NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE;
 
                     US06_Problems[len(US06_Problems)] = NewFailureEntry;
 
-                else:
-                    NewFailureEntry = cUS06_Failure();
-                    NewFailureEntry.hFamily = hFamily;
-                    NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
+        else:
+            NewFailureEntry = cUS06_Failure();
+            NewFailureEntry.hFamily = hFamily;
+            NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
 
-                    US06_Problems[len(US06_Problems)] = NewFailureEntry;
+            US06_Problems[len(US06_Problems)] = NewFailureEntry;
 
     for i in hParser.individuals:
         hIndividual = hParser.individuals[i]
@@ -87,12 +87,12 @@ def US06_Test(hParser):
 
                 US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
 
-            else:
-                NewFailureEntry = cUS06_Failure();
-                NewFailureEntry.hIndividual = hIndividual;
-                NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
+    else:
+        NewFailureEntry = cUS06_Failure();
+        NewFailureEntry.hIndividual = hIndividual;
+        NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
 
-                US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
+        US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
 
 
 
@@ -105,26 +105,18 @@ def US06_DisplayResults():
     pt = PrettyTable();
     pt.field_names = [
         "ID",
+        "INDIVIDUAL ID",
         "Date of Divorce",
         "Date of death",
         "Data failure type"
     ];
 
-    for i in US06_Problems:
+    for i in US06_Problems and US06_Problems2:
         pt.add_row(
             [
                 US06_Problems[i].hFamily.id,
-                US06_Problems[i].hFamily.divorced_date,
-                datetime.strftime(US06_Problems[i].hFamily.divorced_date, DATE_FORMAT) if US06_Problems[i].hFamily.divorced_date else "",
-                str(US06_Problems[i].Failure_Type)
-            ]
-        );
-
-    for i in US06_Problems2:
-        pt.add_row(
-            [
                 US06_Problems2[i].hIndividual.id,
-                US06_Problems2[i].hIndividual.death_date,
+                datetime.strftime(US06_Problems[i].hFamily.divorced_date, DATE_FORMAT) if US06_Problems[i].hFamily.divorced_date else "",
                 datetime.strftime(US06_Problems2[i].hIndividual.death_date, DATE_FORMAT) if US06_Problems2[i].hIndividual.death_date else "",
                 str(US06_Problems2[i].Failure_Type)
             ]

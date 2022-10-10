@@ -17,6 +17,10 @@ def main():
     with open(OUTPUT_FILE_PATH, "w") as outfile:
         validations = "\n".join(validator.validate(parser.individuals, parser.families))
 
+        marriage_before_death = Tests.gedcom.Tests.US05.Execute(parser)
+
+        divorce_before_death = Tests.gedcom.Tests.US06.Execute(parser)
+
         individuals_table = printer.print_individuals(parser.individuals.values())
         family_table = printer.print_families(
             parser.families.values(), parser.individuals
@@ -28,6 +32,10 @@ def main():
         print(family_table)
         #print("VALIDATIONS")
         #print(validations)
+        print("MARRIAGE BEFORE DEATH")
+        print(marriage_before_death)
+        print("DIVORCE BEFORE DEATH")
+        print(divorce_before_death)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -36,6 +44,10 @@ def main():
         #outfile.write("\nVALIDATIONS\n")
         #outfile.write(validations)
         #outfile.write("\n")
+        outfile.write("\nMARRIAGE BEFORE DEATH\n")
+        outfile.write(marriage_before_death)
+        outfile.write("\nDIVORCE BEFORE DEATH\n")
+        outfile.write(divorce_before_death)
 
     Run_Tests(parser);
 
