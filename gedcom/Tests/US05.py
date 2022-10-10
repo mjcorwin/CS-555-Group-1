@@ -10,7 +10,7 @@ global US05_Problems;
 global US05_Problems2;
 class EUS05_FAILURE(Enum):
     # Families
-    US05_FAIL_MARRIAGE_GT_EQ_DEATH = 0,
+    US05_FAIL_MARRIAGE_LT_DEATH = 0,
     US05_FAIL_NO_MARRIAGE = 1,
     US05_FAIL_NO_MARRIAGE_NO_DEATH = 2
 
@@ -51,7 +51,7 @@ def US05_Test(hParser):
                     if ( (hFamily.married_date - hIndividual.death_date).days > 0):
                         NewFailureEntry = cUS05_Failure();
                         NewFailureEntry.hIndividual = hIndividual;
-                        NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_MARRIAGE_GT_EATHORCE;
+                        NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_MARRIAGE_LT_DEATH;
 
                         US05_Problems[len(US05_Problems)] = NewFailureEntry;
                         US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
