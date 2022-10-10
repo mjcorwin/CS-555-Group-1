@@ -22,12 +22,17 @@ def main():
             parser.families.values(), parser.individuals
         )
 
+        LT_150 = Tests.gedcom.Tests.US07.Execute(parser);
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
         print(family_table)
         #print("VALIDATIONS")
         #print(validations)
+
+        print("LESS THAN 150 YEARS OLD")
+        print(LT_150)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -36,6 +41,10 @@ def main():
         #outfile.write("\nVALIDATIONS\n")
         #outfile.write(validations)
         #outfile.write("\n")
+        outfile.write("\nLESS THAN 150 YEARS OLD\n")
+        outfile.write(LT_150)
+
+
 
     Run_Tests(parser);
 
