@@ -108,16 +108,21 @@ def US05_DisplayResults():
         "Data failure type"
     ];
 
-    for i in US05_Problems and US05_Problems2:
+    for i in US05_Problems:
         pt.add_row(
             [
                 US05_Problems[i].hFamily.id,
-                US05_Problems2[i].hIndividual.id,
                 datetime.strftime(US05_Problems[i].hFamily.married_date, DATE_FORMAT) if US05_Problems[i].hFamily.married_date else "",
+            ]
+        );
+    for i in US05_Problems2:
+        pt.add_row(
+            [
+                US05_Problems2[i].hIndividual.id,
                 datetime.strftime(US05_Problems2[i].hIndividual.death_date, DATE_FORMAT) if US05_Problems2[i].hIndividual.death_date else "",
                 str(US05_Problems2[i].Failure_Type)
             ]
-        );
+        )
 
     pt.sortby = "ID"
 
