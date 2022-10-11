@@ -49,8 +49,10 @@ def US05_Test(hParser):
             if (hFamily.married == True):
                 if (hIndividual.death == True):
                     if ( (hFamily.married_date - hIndividual.death_date).days > 0):
+                        #print(str(hIndividual))
                         NewFailureEntry = cUS05_Failure();
                         NewFailureEntry.hIndividual = hIndividual;
+                        NewFailureEntry.hFamily = hFamily;
                         NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_MARRIAGE_LT_DEATH;
 
                         US05_Problems[len(US05_Problems)] = NewFailureEntry;
@@ -59,35 +61,45 @@ def US05_Test(hParser):
             else:
                 if (hFamily.divorced == True):
                     NewFailureEntry = cUS05_Failure();
+                    NewFailureEntry.hIndividual = hIndividual;
                     NewFailureEntry.hFamily = hFamily;
                     NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_BIRTH_GT_DEATH;
 
+                    US05_Problems[len(US05_Problems)] = NewFailureEntry;
+                    US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
+                else:
+                    NewFailureEntry = cUS05_Failure();
+                    NewFailureEntry.hIndividual = hIndividual;
+                    NewFailureEntry.hFamily = hFamily;
+                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_MARRIAGE_NO_DEATH;
 
-        else:
-            NewFailureEntry = cUS05_Failure();
-            NewFailureEntry.hFamily = hFamily;
-            NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_MARRIAGE_NO_DEATH;
-
-            US05_Problems[len(US05_Problems)] = NewFailureEntry;
+                    US05_Problems[len(US05_Problems)] = NewFailureEntry;
+                    US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
 
     for i in hParser.individuals:
         hIndividual = hParser.individuals[i]
 
         if (hIndividual.birth == True):
+
             if(hIndividual.death == True):
                 if ( (hIndividual.birth_date - hIndividual.death_date).days > 0):
                     NewFailureEntry = cUS05_Failure();
                     NewFailureEntry.hIndividual = hIndividual;
+                    NewFailureEntry.hFamily = hFamily;
                     NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_BIRTH_GT_DEATH;
 
+                    US05_Problems[len(US05_Problems)] = NewFailureEntry;
                     US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
         else:
+            #print(str(hIndividual.name)+ " Is Dead " + str(hIndividual.death))
             NewFailureEntry = cUS05_Failure();
             NewFailureEntry.hIndividual = hIndividual;
+            NewFailureEntry.hFamily = hFamily;
             NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_BIRTH_NO_DEATH;
 
+            US05_Problems[len(US05_Problems)] = NewFailureEntry;    
             US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
 
@@ -108,21 +120,16 @@ def US05_DisplayResults():
         "Data failure type"
     ];
 
-    for i in US05_Problems:
+    for i in US05_Problems and US05_Problems2:
         pt.add_row(
             [
                 US05_Problems[i].hFamily.id,
-                datetime.strftime(US05_Problems[i].hFamily.married_date, DATE_FORMAT) if US05_Problems[i].hFamily.married_date else "",
-            ]
-        );
-    for i in US05_Problems2:
-        pt.add_row(
-            [
                 US05_Problems2[i].hIndividual.id,
+                datetime.strftime(US05_Problems[i].hFamily.married_date, DATE_FORMAT) if US05_Problems[i].hFamily.married_date else "",
                 datetime.strftime(US05_Problems2[i].hIndividual.death_date, DATE_FORMAT) if US05_Problems2[i].hIndividual.death_date else "",
                 str(US05_Problems2[i].Failure_Type)
             ]
-        )
+        );
 
     pt.sortby = "ID"
 
