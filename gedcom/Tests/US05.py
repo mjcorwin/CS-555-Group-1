@@ -10,7 +10,7 @@ global US05_Problems;
 global US05_Problems2;
 class EUS05_FAILURE(Enum):
     # Families
-    US05_FAIL_MARRIAGE_LT_DEATH = 0,
+    US05_FAIL_MARRIAGE_GT_DEATH = 0,
     US05_FAIL_NO_MARRIAGE = 1,
     US05_FAIL_NO_MARRIAGE_NO_DEATH = 2
 
@@ -39,68 +39,42 @@ def US05_Test(hParser):
     US05_Problems2 = {}
     US05_Problems2.clear()
 
-
     for i in hParser.families:
         hFamily = hParser.families[i]
 
         for j in hParser.individuals:
             hIndividual = hParser.individuals[j]
 
-            if (hFamily.married == True):
-                if (hIndividual.death == True):
-                    if ( (hFamily.married_date - hIndividual.death_date).days > 0):
-                        #print(str(hIndividual))
+            if(hFamily.married == True):
+                if(hIndividual.death == True):
+                    if (( hFamily.married_date - hIndividual.death_date).days > 0):
                         NewFailureEntry = cUS05_Failure();
-                        NewFailureEntry.hIndividual = hIndividual;
                         NewFailureEntry.hFamily = hFamily;
-                        NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_MARRIAGE_LT_DEATH;
+                        NewFailureEntry.hIndividual = hIndividual;
+                        NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_MARRIAGE_GT_DEATH;
 
                         US05_Problems[len(US05_Problems)] = NewFailureEntry;
                         US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
             else:
-                if (hFamily.divorced == True):
+                if(hIndividual.death == True):
                     NewFailureEntry = cUS05_Failure();
                     NewFailureEntry.hIndividual = hIndividual;
                     NewFailureEntry.hFamily = hFamily;
-                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_BIRTH_GT_DEATH;
+                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_MARRIAGE;
 
                     US05_Problems[len(US05_Problems)] = NewFailureEntry;
                     US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
+
                 else:
                     NewFailureEntry = cUS05_Failure();
                     NewFailureEntry.hIndividual = hIndividual;
                     NewFailureEntry.hFamily = hFamily;
-                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_MARRIAGE_NO_DEATH;
+                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_MARRIAGE_NO_DEATH
 
                     US05_Problems[len(US05_Problems)] = NewFailureEntry;
                     US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
-
-    for i in hParser.individuals:
-        hIndividual = hParser.individuals[i]
-
-        if (hIndividual.birth == True):
-
-            if(hIndividual.death == True):
-                if ( (hIndividual.birth_date - hIndividual.death_date).days > 0):
-                    NewFailureEntry = cUS05_Failure();
-                    NewFailureEntry.hIndividual = hIndividual;
-                    NewFailureEntry.hFamily = hFamily;
-                    NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_BIRTH_GT_DEATH;
-
-                    US05_Problems[len(US05_Problems)] = NewFailureEntry;
-                    US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
-
-        else:
-            #print(str(hIndividual.name)+ " Is Dead " + str(hIndividual.death))
-            NewFailureEntry = cUS05_Failure();
-            NewFailureEntry.hIndividual = hIndividual;
-            NewFailureEntry.hFamily = hFamily;
-            NewFailureEntry.Failure_Type = EUS05_FAILURE.US05_FAIL_NO_BIRTH_NO_DEATH;
-
-            US05_Problems[len(US05_Problems)] = NewFailureEntry;    
-            US05_Problems2[len(US05_Problems2)] = NewFailureEntry;
 
 
 

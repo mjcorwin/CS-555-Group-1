@@ -9,7 +9,7 @@ DATE_FORMAT = "%Y-%m-%d";
 global US06_Problems;
 global US06_Problems2;
 class EUS06_FAILURE(Enum):
-    US06_FAIL_DIVORCE_GT_EQ_DEATH = 0,
+    US06_FAIL_DIVORCE_GT_DEATH = 0,
     US06_FAIL_NO_DIVORCE = 1,
     US06_FAIL_NO_DIVORCE_NO_DEATH = 2
 
@@ -34,66 +34,41 @@ def US06_Test(hParser):
     US06_Problems2 = {}
     US06_Problems2.clear()
 
+    for i in hParser.families:
+        hFamily = hParser.families[i]
 
-    for i in hParser.individuals:
-        hIndividual = hParser.individuals[i]
+        for j in hParser.individuals:
+            hIndividual = hParser.individuals[j]
 
-        for j in hParser.families:
-            hFamily = hParser.families[j]
-
-            if (hFamily.divorced == True):
+            if(hFamily.divorced == True):
                 if(hIndividual.death == True):
-                    if ( (hFamily.divorced_date - hIndividual.death_date).days > 0):
+                    if (( hFamily.divorced_date - hIndividual.death_date).days > 0):
                         NewFailureEntry = cUS06_Failure();
                         NewFailureEntry.hFamily = hFamily;
-                        NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_DIVORCE_GT_EQ_DEATH;
+                        NewFailureEntry.hIndividual = hIndividual;
+                        NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_DIVORCE_GT_DEATH;
 
                         US06_Problems[len(US06_Problems)] = NewFailureEntry;
+                        US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
 
             else:
-            # No birth...
-                if (hFamily.married == True):
+                if(hIndividual.death == True):
                     NewFailureEntry = cUS06_Failure();
+                    NewFailureEntry.hIndividual = hIndividual;
                     NewFailureEntry.hFamily = hFamily;
                     NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE;
 
                     US06_Problems[len(US06_Problems)] = NewFailureEntry;
-
-        else:
-            NewFailureEntry = cUS06_Failure();
-            NewFailureEntry.hFamily = hFamily;
-            NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
-
-            US06_Problems[len(US06_Problems)] = NewFailureEntry;
-
-    for i in hParser.individuals:
-        hIndividual = hParser.individuals[i]
-
-        if (hIndividual.birth == True):
-            if(hIndividual.death == True):
-                if ( (hIndividual.birth_date - hIndividual.death_date).days > 0):
-                    NewFailureEntry = cUS06_Failure();
-                    NewFailureEntry.hIndividual = hIndividual;
-                    NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_DIVORCE_GT_EQ_DEATH;
-
                     US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
 
-        else:
-        # No Birth
-            if (hIndividual.death == True):
-                NewFailureEntry = cUS06_Failure();
-                NewFailureEntry.hIndividual = hIndividual;
-                NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE;
+                else:
+                    NewFailureEntry = cUS06_Failure();
+                    NewFailureEntry.hIndividual = hIndividual;
+                    NewFailureEntry.hFamily = hFamily;
+                    NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH
 
-                US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
-
-    else:
-        NewFailureEntry = cUS06_Failure();
-        NewFailureEntry.hIndividual = hIndividual;
-        NewFailureEntry.Failure_Type = EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH;
-
-        US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
-
+                    US06_Problems[len(US06_Problems)] = NewFailureEntry;
+                    US06_Problems2[len(US06_Problems2)] = NewFailureEntry;
 
 
 def US06_DisplayResults():
