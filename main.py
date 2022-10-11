@@ -24,6 +24,8 @@ def main():
 
         LT_150 = Tests.gedcom.Tests.US07.Execute(parser);
 
+        BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser);
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -33,6 +35,9 @@ def main():
 
         print("LESS THAN 150 YEARS OLD")
         print(LT_150)
+
+        print("Born before marriage or after divorce")
+        print(BIR_BF_MARR_AF_DIV)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -44,6 +49,9 @@ def main():
         outfile.write("\nLESS THAN 150 YEARS OLD\n")
         outfile.write(LT_150)
 
+        outfile.write("\nBorn before marriage or after divorce\n")
+        outfile.write(BIR_BF_MARR_AF_DIV)
+
 
 
     Run_Tests(parser);
@@ -52,6 +60,7 @@ def Run_Tests(hParser):
     Tests.US03.Execute(hParser);
     Tests.US04.Execute(hParser);
     Tests.US07.Execute(hParser);
+    Tests.US08.Execute(hParser);
 
 if __name__ == "__main__":
     main()
