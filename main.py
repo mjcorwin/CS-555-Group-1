@@ -5,7 +5,7 @@ from gedcom.parser import Parser
 
 from gedcom import Tests
 
-INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input.gedcom")
+INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input2.ged")
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
@@ -29,6 +29,13 @@ def main():
         LT_150 = Tests.gedcom.Tests.US07.Execute(parser);
 
         BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser);
+
+        # US11 - No bigamy
+        NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser);
+
+        # US12 - Parents not too old
+        #PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser);
+
 
         print("INDIVIDUALS")
         print(individuals_table)
@@ -69,7 +76,10 @@ def main():
         outfile.write("\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
-    Run_Tests(parser)
+        outfile.write("\nNO BIGAMY\n");
+        outfile.write(NO_BIGAMY);
+
+    Run_Tests(parser);
 
 
 
@@ -81,6 +91,8 @@ def Run_Tests(hParser):
     Tests.US07.Execute(hParser);
     Tests.US08.Execute(hParser);
 
+    Tests.US11.Execute(hParser);
+    #Tests.US12.Execute(hParser);
 
 if __name__ == "__main__":
     main()
