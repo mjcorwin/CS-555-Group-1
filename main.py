@@ -34,7 +34,7 @@ def main():
         NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser);
 
         # US12 - Parents not too old
-        #PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser);
+        PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser);
 
 
         print("INDIVIDUALS")
@@ -79,6 +79,9 @@ def main():
         outfile.write("\nNO BIGAMY\n");
         outfile.write(NO_BIGAMY);
 
+        outfile.write("\nPARENTS NOT TOO OLD\n");
+        outfile.write(PARENTS_NOT_TOO_OLD);
+
     Run_Tests(parser);
 
 
@@ -92,7 +95,7 @@ def Run_Tests(hParser):
     Tests.US08.Execute(hParser);
 
     Tests.US11.Execute(hParser);
-    #Tests.US12.Execute(hParser);
+    Tests.US12.Execute(hParser);
 
 if __name__ == "__main__":
     main()
