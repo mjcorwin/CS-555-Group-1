@@ -40,7 +40,7 @@ def US04_Test(hParser):
 
                     US04_Problems[len(US04_Problems)] = NewFailureEntry;
         else:
-            # No birth...
+            # No married date...
             if (hFamily.divorced == True):
                 #print (str("Date of divorced present with no marriage date!"));
                 NewFailureEntry = cUS04_Failure();
