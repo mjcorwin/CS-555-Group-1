@@ -26,16 +26,18 @@ def main():
             parser.families.values(), parser.individuals
         )
 
-        LT_150 = Tests.gedcom.Tests.US07.Execute(parser);
+        LT_150 = Tests.gedcom.Tests.US07.Execute(parser)
 
-        BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser);
+        BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser)
 
         # US11 - No bigamy
-        NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser);
+        NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser)
 
         # US12 - Parents not too old
-        PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser);
+        PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser)
 
+        # US15 - Fewer than 15 siblings
+        FEWER_THAN_15_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
 
         print("INDIVIDUALS")
         print(individuals_table)
@@ -54,6 +56,9 @@ def main():
         print("Born before marriage or after divorce")
         print(BIR_BF_MARR_AF_DIV)
 
+        print("Fewer than 15 siblings")
+        print(FEWER_THAN_15_SIBLINGS)
+
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
         outfile.write("\nFAMILIES\n")
@@ -66,36 +71,40 @@ def main():
         outfile.write(marriage_before_death)
         outfile.write("\nDIVORCE BEFORE DEATH\n")
         outfile.write(divorce_before_death)
-        
-        #outfile.write("\nVALIDATIONS\n")
-        #outfile.write(validations)
-        #outfile.write("\n")
+
+        # outfile.write("\nVALIDATIONS\n")
+        # outfile.write(validations)
+        # outfile.write("\n")
         outfile.write("\nLESS THAN 150 YEARS OLD\n")
         outfile.write(LT_150)
 
         outfile.write("\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
-        outfile.write("\nNO BIGAMY\n");
-        outfile.write(NO_BIGAMY);
+        outfile.write("\nNO BIGAMY\n")
+        outfile.write(NO_BIGAMY)
 
-        outfile.write("\nPARENTS NOT TOO OLD\n");
-        outfile.write(PARENTS_NOT_TOO_OLD);
+        outfile.write("\nPARENTS NOT TOO OLD\n")
+        outfile.write(PARENTS_NOT_TOO_OLD)
 
-    Run_Tests(parser);
+        outfile.write("\nFEWER THAN 15 SIBLINGS\n")
+        outfile.write(FEWER_THAN_15_SIBLINGS)
 
+    Run_Tests(parser)
 
 
 def Run_Tests(hParser):
-    Tests.US03.Execute(hParser);
-    Tests.US04.Execute(hParser);
-    Tests.US05.Execute(hParser);
-    Tests.US06.Execute(hParser);
-    Tests.US07.Execute(hParser);
-    Tests.US08.Execute(hParser);
+    Tests.US03.Execute(hParser)
+    Tests.US04.Execute(hParser)
+    Tests.US05.Execute(hParser)
+    Tests.US06.Execute(hParser)
+    Tests.US07.Execute(hParser)
+    Tests.US08.Execute(hParser)
 
-    Tests.US11.Execute(hParser);
-    Tests.US12.Execute(hParser);
+    Tests.US11.Execute(hParser)
+    Tests.US12.Execute(hParser)
+    Tests.US15.Execute(hParser)
+
 
 if __name__ == "__main__":
     main()
