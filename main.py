@@ -5,7 +5,7 @@ from gedcom.parser import Parser
 
 from gedcom import Tests
 
-INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input2.ged")
+INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input.gedcom")
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
@@ -36,6 +36,9 @@ def main():
         # US12 - Parents not too old
         PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser)
 
+        # US13 -Siblings spacing
+        SIBLINGS_SPACING = Tests.gedcom.Tests.US13.Execute(parser)
+
         # US15 - Fewer than 15 siblings
         FEWER_THAN_15_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
 
@@ -55,6 +58,9 @@ def main():
 
         print("Born before marriage or after divorce")
         print(BIR_BF_MARR_AF_DIV)
+
+        print("SIBLINGS SPACING")
+        print(SIBLINGS_SPACING)
 
         print("Fewer than 15 siblings")
         print(FEWER_THAN_15_SIBLINGS)
@@ -87,6 +93,9 @@ def main():
         outfile.write("\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
+        outfile.write("\nSIBLINGS SPACING\n")
+        outfile.write(SIBLINGS_SPACING)
+
         outfile.write("\nFEWER THAN 15 SIBLINGS\n")
         outfile.write(FEWER_THAN_15_SIBLINGS)
 
@@ -103,6 +112,7 @@ def Run_Tests(hParser):
 
     Tests.US11.Execute(hParser)
     Tests.US12.Execute(hParser)
+    Tests.US13.Execute(hParser)
     Tests.US15.Execute(hParser)
 
 
