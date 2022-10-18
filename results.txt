@@ -1,16 +1,18 @@
 INDIVIDUALS
-+------+--------------------+--------+------------+-----+-------+-------+----------+----------+
-|  ID  |        Name        | Gender |  Birthday  | Age | Alive | Death |  Child   |  Spouse  |
-+------+--------------------+--------+------------+-----+-------+-------+----------+----------+
-| @I1@ |  Lynn /Tompkins/   |   F    | 1845-09-02 | 177 | False |  N/A  |   N/A    | {'@F2@'} |
-| @I2@ |  Mark /Chambers/   |   M    | 1842-07-03 | 180 | False |  N/A  |   N/A    | {'@F1@'} |
-| @I3@ |  Jeffrey /Davis/   |   M    | 1944-06-10 |  78 | False |  N/A  |   N/A    | {'@F2@'} |
-| @I4@ |  Brad /Chambers/   |   M    | 1965-03-14 |  57 | False |  N/A  | {'@F2@'} |   N/A    |
-| @I5@ |  Ryan /Chambers/   |   M    | 1970-05-17 |  52 | False |  N/A  | {'@F1@'} | {'@F3@'} |
-| @I6@ | Jennifer /Collins/ |   F    | 1973-08-04 |  49 | False |  N/A  |   N/A    | {'@F3@'} |
-| @I7@ | Jessica /Collins/  |   F    | 1995-02-10 |  27 | False |  N/A  | {'@F3@'} | {'@F4@'} |
-| @I8@ |  Matthew /Klein/   |   M    | 2010-10-15 |  12 | False |  N/A  |   N/A    | {'@F4@'} |
-+------+--------------------+--------+------------+-----+-------+-------+----------+----------+
+
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
+|  ID  |        Name        | Gender |  Birthday  | Age | Alive |   Death    |  Child   |  Spouse  |
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
+| @I1@ |  Lynn /Tompkins/   |   F    | 1845-09-02 | 177 | False |    N/A     |   N/A    | {'@F2@'} |
+| @I2@ |  Mark /Chambers/   |   M    | 1842-07-03 | 180 | False |    N/A     |   N/A    | {'@F1@'} |
+| @I3@ |  Jeffrey /Davis/   |   M    | 1944-06-10 |  78 | False |    N/A     |   N/A    | {'@F2@'} |
+| @I4@ |  Brad /Chambers/   |   M    | 1965-03-14 |  57 | False |    N/A     | {'@F2@'} |   N/A    |
+| @I5@ |  Ryan /Chambers/   |   M    | 1970-05-17 |  52 | False |    N/A     | {'@F1@'} | {'@F3@'} |
+| @I6@ | Jennifer /Collins/ |   F    | 1973-08-04 |  16 |  True | 1990-08-04 |   N/A    | {'@F3@'} |
+| @I7@ | Jessica /Collins/  |   F    | 1995-02-10 |  27 | False |    N/A     | {'@F3@'} | {'@F4@'} |
+| @I8@ |  Matthew /Klein/   |   M    | 1995-10-15 |  27 | False |    N/A     |   N/A    | {'@F4@'} |
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
+
 FAMILIES
 +------+------------+----------+------------+-----------------+---------+--------------------+----------+
 |  ID  |  Married   | Divorced | Husband ID |   Husband Name  | Wife ID |     Wife Name      | Children |
@@ -24,10 +26,12 @@ VALIDATIONS
 
 
 MARRIAGE BEFORE DEATH
-+----+--------------+---------------+---------------+-------------------+
-| ID | INDVIDUAL ID | Marriage Date | Date of death | Data failure type |
-+----+--------------+---------------+---------------+-------------------+
-+----+--------------+---------------+---------------+-------------------+
++------+--------------+---------------+---------------+-------------------------------------------+
+|  ID  | INDVIDUAL ID | Marriage Date | Date of death |             Data failure type             |
++------+--------------+---------------+---------------+-------------------------------------------+
+| @F3@ |     @I6@     |   1992-05-05  |   1990-08-04  | EUS05_FAILURE.US05_FAIL_MARRIAGE_GT_DEATH |
+| @F4@ |     @I6@     |   2016-11-14  |   1990-08-04  | EUS05_FAILURE.US05_FAIL_MARRIAGE_GT_DEATH |
++------+--------------+---------------+---------------+-------------------------------------------+
 DIVORCE BEFORE DEATH
 +------+---------------+-----------------+---------------+---------------------------------------------+
 |  ID  | INDIVIDUAL ID | Date of Divorce | Date of death |              Data failure type              |
@@ -37,7 +41,7 @@ DIVORCE BEFORE DEATH
 | @F1@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F1@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F1@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
-| @F1@ |      @I6@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F1@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F1@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
@@ -45,7 +49,7 @@ DIVORCE BEFORE DEATH
 | @F3@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
-| @F3@ |      @I6@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F3@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
@@ -53,7 +57,7 @@ DIVORCE BEFORE DEATH
 | @F4@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
-| @F4@ |      @I6@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F4@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 +------+---------------+-----------------+---------------+---------------------------------------------+
@@ -70,12 +74,14 @@ Born before marriage or after divorce
 +-----------+---------------+--------------+-----------------+------------------+---------------------------------------+
 |    @F2@   |   1965-07-09  |  1966-05-10  | Brad /Chambers/ |    1965-03-14    | EUS08_FAILURE.US08_FAIL_BIRTH_BF_MARR |
 +-----------+---------------+--------------+-----------------+------------------+---------------------------------------+
-Married before either spouse is 14
-+-----------+---------------+------------+---------+----------------------------------+
-| Family ID | Marriage Date | Husband ID | Wife ID |        Data failure type         |
-+-----------+---------------+------------+---------+----------------------------------+
-|    @F4@   |   2016-11-14  |    @I8@    |   @I1@  | EUS10_FAILURE.US10_FAIL_HUSB_AGE |
-+-----------+---------------+------------+---------+----------------------------------+
+
+Born after death of parent(s)
++-----------+----------+------------------+--------+--------+----------------------------------+
+| Family ID | Child ID | Child Birth Date | Dad ID | Mom ID |        Data failure type         |
++-----------+----------+------------------+--------+--------+----------------------------------+
+|    @F3@   |   @I7@   |    1995-02-10    |  @I2@  |  @I6@  | EUS09_FAILURE.US09_FAIL_DEAD_MOM |
++-----------+----------+------------------+--------+--------+----------------------------------+
+
 NO BIGAMY
 +------+-----------------+--------------------+---------------------------------------+
 |  ID  |       Name      |      Spouses       |              Failure type             |
