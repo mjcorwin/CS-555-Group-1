@@ -29,9 +29,12 @@ def main():
         LT_150 = Tests.gedcom.Tests.US07.Execute(parser);
 
         BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser);
-
         # US09 - Can't be born after parents death
         US09 = Tests.gedcom.Tests.US09.Execute(parser);
+       
+       # US10 - No marrying before 14 for husb or wife
+        US10 = Tests.gedcom.Tests.US10.Execute(parser);
+
 
         # US11 - No bigamy
         NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser);
@@ -59,6 +62,9 @@ def main():
 
         print("Born after parents death")
         print(US09)
+        
+        print("No marrying before 14")
+        print(US10)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -84,6 +90,9 @@ def main():
 
         outfile.write("\nBorn after death of parent(s)\n")
         outfile.write(US09);
+        
+        outfile.write("\nMarried before either spouse is 14\n")
+        outfile.write(us10)
 
         outfile.write("\nNO BIGAMY\n");
         outfile.write(NO_BIGAMY);
@@ -103,7 +112,7 @@ def Run_Tests(hParser):
     Tests.US07.Execute(hParser);
     Tests.US08.Execute(hParser);
     Tests.US09.Execute(hParser);
-
+    Tests.US10.Execute(hParser);
     Tests.US11.Execute(hParser);
     Tests.US12.Execute(hParser);
 
