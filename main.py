@@ -30,6 +30,9 @@ def main():
 
         BIR_BF_MARR_AF_DIV = Tests.gedcom.Tests.US08.Execute(parser);
 
+        # US10 - No marrying before 14 for husb or wife
+        MARRIED_AGE = Tests.gedcom.Tests.US10.Execute(parser);
+
         # US11 - No bigamy
         NO_BIGAMY = Tests.gedcom.Tests.US11.Execute(parser);
 
@@ -54,6 +57,9 @@ def main():
         print("Born before marriage or after divorce")
         print(BIR_BF_MARR_AF_DIV)
 
+        print("No marrying before 14")
+        print(MARRIED_AGE)
+
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
         outfile.write("\nFAMILIES\n")
@@ -76,6 +82,9 @@ def main():
         outfile.write("\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
+        outfile.write("\nMarried before either spouse is 14\n")
+        outfile.write(MARRIED_AGE)
+
         outfile.write("\nNO BIGAMY\n");
         outfile.write(NO_BIGAMY);
 
@@ -93,7 +102,7 @@ def Run_Tests(hParser):
     Tests.US06.Execute(hParser);
     Tests.US07.Execute(hParser);
     Tests.US08.Execute(hParser);
-
+    Tests.US10.Execute(hParser);
     Tests.US11.Execute(hParser);
     Tests.US12.Execute(hParser);
 
