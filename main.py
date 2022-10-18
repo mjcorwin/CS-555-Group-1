@@ -92,7 +92,7 @@ def main():
         outfile.write(US09);
         
         outfile.write("\nMarried before either spouse is 14\n")
-        outfile.write(us10)
+        outfile.write(US10)
 
         outfile.write("\nNO BIGAMY\n");
         outfile.write(NO_BIGAMY);
