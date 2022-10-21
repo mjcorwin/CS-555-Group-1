@@ -118,6 +118,7 @@ def Run_Tests(hParser):
     Tests.US10.Execute(hParser)
     Tests.US11.Execute(hParser)
     Tests.US12.Execute(hParser)
+    Tests.US15.Execute(hParser)
 
 
 if __name__ == "__main__":
