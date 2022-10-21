@@ -101,3 +101,16 @@ PARENTS NOT TOO OLD
 |    @F2@   |    @I3@   | Jeffrey /Davis/ |    @I1@   |  Lynn /Tompkins/   |   EUS12_FAILURE.US12_FAIL_MOTHER_TOOOLD    |
 |    @F3@   |    @I2@   | Mark /Chambers/ |    @I6@   | Jennifer /Collins/ |   EUS12_FAILURE.US12_FAIL_FATHER_TOOOLD    |
 +-----------+-----------+-----------------+-----------+--------------------+--------------------------------------------+
+PARENTS NOT TOO OLD
++-----------+-----------+-----------------+-----------+--------------------+--------------------------------------------+
+| Family ID | Father ID |      Father     | Mother ID |       Mother       |                Failure type                |
++-----------+-----------+-----------------+-----------+--------------------+--------------------------------------------+
+|    @F1@   |    @I2@   | Mark /Chambers/ |    @I1@   |  Lynn /Tompkins/   | EUS12_FAILURE.US12_FAIL_BOTHPARENTS_TOOOLD |
+|    @F2@   |    @I3@   | Jeffrey /Davis/ |    @I1@   |  Lynn /Tompkins/   |   EUS12_FAILURE.US12_FAIL_MOTHER_TOOOLD    |
+|    @F3@   |    @I2@   | Mark /Chambers/ |    @I6@   | Jennifer /Collins/ |   EUS12_FAILURE.US12_FAIL_FATHER_TOOOLD    |
++-----------+-----------+-----------------+-----------+--------------------+--------------------------------------------+
+TOO MANY SIBLINGS
++----+--------------------+-------------------+
+| ID | Number of Siblings | Data Failure Type |
++----+--------------------+-------------------+
++----+--------------------+-------------------+
