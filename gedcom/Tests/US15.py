@@ -26,7 +26,7 @@ def US15_Test(hParser):
     for f in hParser.families.values():
         error = cUS15_Failure()
 
-        if len(f.children_ids) > 15:
+        if len(f.children_ids) >= 15:
             error.hFamily = f
             error.failure_Type = EUS15_FAILURE.US15_FAIL_TOO_MANY_SIBLINGS
             US15_Problems.append(error)

@@ -44,7 +44,7 @@ class TestUS15:
         parser.families = {family.id: family}
 
         US15_Test(parser)
-        assert len(US15_Problems) == 0
+        assert len(US15_Problems) == 1
 
     def test_family_with_20_siblings(self, family, add_siblings_to_family):
         add_siblings_to_family(family, 20)
