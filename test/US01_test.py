@@ -1,35 +1,4 @@
-import random
-from datetime import datetime, timedelta
-
-import pytest
 from gedcom import validator
-from gedcom.family import Family
-from gedcom.individual import Individual
-
-
-@pytest.fixture
-def future_date():
-    return datetime.now().date() + timedelta(days=random.randint(0, 10000))
-
-
-@pytest.fixture
-def previous_date():
-    return datetime.now().date() + timedelta(days=-random.randint(0, 10000))
-
-
-@pytest.fixture
-def today():
-    return datetime.now().date()
-
-
-@pytest.fixture
-def individual():
-    return Individual("I" + str(random.randint(0, 10000)))
-
-
-@pytest.fixture
-def family():
-    return Family("F" + str(random.randint(0, 10000)))
 
 
 class TestUS01:

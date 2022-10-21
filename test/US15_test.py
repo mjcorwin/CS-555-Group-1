@@ -1,24 +1,5 @@
-# fewer than 15 siblings in a family
-import random
-
-import pytest
-from gedcom.family import Family
 from gedcom.parser import Parser
 from gedcom.Tests.US15 import *
-
-
-@pytest.fixture
-def family():
-    return Family("F" + str(random.randint(0, 10000)))
-
-
-@pytest.fixture
-def add_siblings_to_family():
-    def add_siblings(family, num_siblings):
-        for _ in range(num_siblings):
-            family.children_ids.append("I" + str(random.randint(0, 10000)))
-
-    return add_siblings
 
 
 class TestUS15:
