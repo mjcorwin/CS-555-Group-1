@@ -44,6 +44,11 @@ def main():
         # US15 - More than 15 siblings
         TOO_MANY_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
 
+        # US16 - More than 15 siblings
+        MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME = Tests.gedcom.Tests.US16.Execute(
+            parser
+        )
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -104,6 +109,9 @@ def main():
         outfile.write("\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
+        outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
+        outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
+
     Run_Tests(parser)
 
 
@@ -119,6 +127,7 @@ def Run_Tests(hParser):
     Tests.US11.Execute(hParser)
     Tests.US12.Execute(hParser)
     Tests.US15.Execute(hParser)
+    Tests.US16.Execute(hParser)
 
 
 if __name__ == "__main__":

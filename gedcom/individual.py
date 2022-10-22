@@ -46,6 +46,9 @@ class Individual:
     def alive(self):
         return self.death
 
+    def last_name(self):
+        return self.name.split("/")[1]
+
 
 def timedelta_to_years(delta):
     seconds_in_year = 365.25 * 24 * 60 * 60

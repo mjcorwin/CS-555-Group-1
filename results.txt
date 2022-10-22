@@ -114,3 +114,10 @@ TOO MANY SIBLINGS
 | ID | Number of Siblings | Data Failure Type |
 +----+--------------------+-------------------+
 +----+--------------------+-------------------+
+MALE FAMILY MEMBER DIFFERENT LAST NAMES
++------+-------------------------------+---------------------------------------------------+
+|  ID  | Male Family Member Last Names |                 Data Failure Type                 |
++------+-------------------------------+---------------------------------------------------+
+| @F2@ |            Chambers           | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
+| @F3@ |            Collins            | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
++------+-------------------------------+---------------------------------------------------+

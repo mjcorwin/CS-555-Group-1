@@ -40,6 +40,17 @@ def make_individual():
 
 
 @pytest.fixture
+def make_male_individual_with_last_name():
+    def make_individual(last_name):
+        i = Individual("I" + str(random.randint(0, 10000)))
+        i.name = f" /{last_name}/"
+        i.sex = "M"
+        return i
+
+    return make_individual
+
+
+@pytest.fixture
 def husband(make_individual):
     husband = make_individual()
     husband.sex = "M"
