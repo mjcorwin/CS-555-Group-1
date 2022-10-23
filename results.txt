@@ -8,13 +8,18 @@ INDIVIDUALS
 | I07  | Jennifer /Smith/ |   F    | 1960-09-23 |  62 | False |    N/A     |   N/A   | {'F23'} |
 | I19  |   Dick /Smith/   |   M    | 1981-02-15 |  41 | False |    N/A     | {'F23'} |   N/A   |
 | I26  |   Jane /Smith/   |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
+| I27  | Jasmine /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
+| I28  | Jessica /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
+| I29  |  Janice /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
+| I30  |  Justin /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
+| I31  | Justice /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
 +------+------------------+--------+------------+-----+-------+------------+---------+---------+
 FAMILIES
-+-----+------------+----------+------------+--------------+---------+------------------+--------------------------------+
-|  ID |  Married   | Divorced | Husband ID | Husband Name | Wife ID |    Wife Name     |            Children            |
-+-----+------------+----------+------------+--------------+---------+------------------+--------------------------------+
-| F23 | 1950-02-14 |   True   |    I01     | Joe /Smith/  |   I07   | Jennifer /Smith/ | {'I011', 'I014', 'I19', 'I26'} |
-+-----+------------+----------+------------+--------------+---------+------------------+--------------------------------+
++-----+------------+----------+------------+--------------+---------+------------------+-------------------------------------------------------------------+
+|  ID |  Married   | Divorced | Husband ID | Husband Name | Wife ID |    Wife Name     |                              Children                             |
++-----+------------+----------+------------+--------------+---------+------------------+-------------------------------------------------------------------+
+| F23 | 1950-02-14 |   True   |    I01     | Joe /Smith/  |   I07   | Jennifer /Smith/ | {'I011', 'I014', 'I19', 'I26', 'I27', 'I28', 'I29', 'I30', 'I31'} |
++-----+------------+----------+------------+--------------+---------+------------------+-------------------------------------------------------------------+
 VALIDATIONS
 ERROR: INDIVIDUAL: US01: I01: Birthday 2030-07-15 occurs in the future
 ERROR: INDIVIDUAL: US02: I01: Birthday 2030-07-15 occurs after Marriage 1950-02-14
@@ -77,7 +82,27 @@ US13: SIBLINGS SPACING
 | Sibling A ID | Sibling A Birthday | Sibling B ID | Sibling B Birthday | Siblings Birthday Difference (Days) |                       Failure type                      |
 +--------------+--------------------+--------------+--------------------+-------------------------------------+---------------------------------------------------------+
 |     I19      |     1981-02-15     |     I26      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
+|     I19      |     1981-02-15     |     I27      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
+|     I19      |     1981-02-15     |     I28      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
+|     I19      |     1981-02-15     |     I29      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
+|     I19      |     1981-02-15     |     I30      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
+|     I19      |     1981-02-15     |     I31      |     1981-02-12     |                  3                  | EUS13_FAILURE.US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS |
 +--------------+--------------------+--------------+--------------------+-------------------------------------+---------------------------------------------------------+
+US14: Multiple Births <= 5
++----------------------------------------+------------------------------+---------------------+---------------------------------------------+
+|         Sibling A and B Names          |  Sibling A and B Birthdays   | Multiple births > 5 |              Data failure type              |
++----------------------------------------+------------------------------+---------------------+---------------------------------------------+
+| ('Jasmine /Smith/', 'Jessica /Smith/') | ('1981-02-12', '1981-02-12') |          1          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jasmine /Smith/', 'Janice /Smith/')  | ('1981-02-12', '1981-02-12') |          2          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jasmine /Smith/', 'Justin /Smith/')  | ('1981-02-12', '1981-02-12') |          3          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jasmine /Smith/', 'Justice /Smith/') | ('1981-02-12', '1981-02-12') |          4          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jessica /Smith/', 'Janice /Smith/')  | ('1981-02-12', '1981-02-12') |          5          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jessica /Smith/', 'Justin /Smith/')  | ('1981-02-12', '1981-02-12') |          6          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Jessica /Smith/', 'Justice /Smith/') | ('1981-02-12', '1981-02-12') |          7          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+|  ('Janice /Smith/', 'Justin /Smith/')  | ('1981-02-12', '1981-02-12') |          8          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Janice /Smith/', 'Justice /Smith/')  | ('1981-02-12', '1981-02-12') |          9          | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
+| ('Justin /Smith/', 'Justice /Smith/')  | ('1981-02-12', '1981-02-12') |          10         | EUS14_FAILURE.US14_FAIL_SIBLINGS_BIRTH_GT_5 |
++----------------------------------------+------------------------------+---------------------+---------------------------------------------+
 TOO MANY SIBLINGS
 +----+--------------------+-------------------+
 | ID | Number of Siblings | Data Failure Type |

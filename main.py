@@ -44,6 +44,10 @@ def main():
         # US13 - SIBLINGS SPACING
         US13 = Tests.gedcom.Tests.US13.Execute(parser);
 
+
+        # US14 - MULTIPLE BIRTHS <= 5
+        US14 = Tests.gedcom.Tests.US14.Execute(parser);
+
         # US15 - More than 15 siblings
         TOO_MANY_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
 
@@ -78,6 +82,9 @@ def main():
 
         print("US13: Siblings Spacing")
         print(US13)
+
+        print("US14: Multiple births <= 5")
+        print(US14)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -116,6 +123,9 @@ def main():
         outfile.write("\nUS13: SIBLINGS SPACING\n")
         outfile.write(US13)
 
+        outfile.write("\nUS14: Multiple Births <= 5\n")
+        outfile.write(US14)
+
         outfile.write("\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
@@ -137,6 +147,7 @@ def Run_Tests(hParser):
     Tests.US11.Execute(hParser)
     Tests.US12.Execute(hParser)
     Tests.US13.Execute(hParser)
+    Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
 

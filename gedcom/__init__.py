@@ -7,3 +7,4 @@ from gedcom.Tests import US10;
 from gedcom.Tests import US11;
 from gedcom.Tests import US12;
 from gedcom.Tests import US13;
+from gedcom.Tests import US14
