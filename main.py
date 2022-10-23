@@ -123,7 +123,7 @@ def main():
         outfile.write("\nUS13: SIBLINGS SPACING\n")
         outfile.write(US13)
 
-        outfile.write("\nUS14: Multiple Births <= 5\n")
+        outfile.write("\nUS14: Multiple Births > 5\n")
         outfile.write(US14)
 
         outfile.write("\nTOO MANY SIBLINGS\n")
