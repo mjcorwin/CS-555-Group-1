@@ -49,6 +49,22 @@ def make_male_individual_with_last_name():
 
     return make_individual
 
+@pytest.fixture
+def make_family_with_same_last_names():
+    def make_sibling_last_name(last_name):
+        i = Individual("I" + str(random.randint(0, 10000)))
+        i.name = f" /{last_name}"
+        return i
+    return make_sibling_last_name
+
+@pytest.fixture
+def make_family_with_birth_dates():
+    def make_sibling_birth_dates(birth_dates):
+        i = Individual("I" + str(random.randint(0, 10000)))
+        i.birth = f" /{birth_dates}"
+        return i
+    return make_sibling_birth_dates
+
 
 @pytest.fixture
 def husband(make_individual):

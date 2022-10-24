@@ -3,9 +3,7 @@
         Story Description: No more than five siblings should be born at the same time
 """
 
-from collections import defaultdict, Counter
 from datetime import datetime
-from socket import dup
 from gedcom import individual
 from prettytable import PrettyTable;
 from enum import Enum
@@ -13,11 +11,10 @@ from enum import Enum
 SECONDS_IN_YEAR = 365.25 * 24 * 60 * 60;
 DATE_FORMAT = "%Y-%m-%d";
 
-global US14_Problems;
+US14_Problems = []
 class EUS14_FAILURE(Enum):
     # Individuals
-    US14_FAIL_SIBLINGS_BIRTH_GT_5 = 0,
-
+    US14_FAIL_SIBLINGS_BIRTH_GT_5 = 0
 
 class cUS14_Failure:
     hSibling = None
@@ -29,11 +26,7 @@ class cUS14_Failure:
         self.tSibling = None
         self.Failure_Type = None;
 
-
 def US14_Test(hParser):
-    global US14_Problems;
-
-    US14_Problems = [];
     US14_Problems.clear();
 
     count = 0
@@ -44,7 +37,6 @@ def US14_Test(hParser):
         for sib_id in family.children_ids:
             siblings.append(hParser.individuals[sib_id])
 
-        
         for i in range(0, len(siblings) - 1):
             for j in range(i + 1, len(siblings) - 1):
                 sibling = siblings[i]
@@ -66,12 +58,7 @@ def US14_Test(hParser):
                         US14_Problems.append(NewFailureEntry)
 
 
-
-
-
-
 def US14_DisplayResults(hParser):
-    global US14_Problems;
     result = 0
 
     print ("");

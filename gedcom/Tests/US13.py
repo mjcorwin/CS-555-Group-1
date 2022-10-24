@@ -1,8 +1,7 @@
 from prettytable import PrettyTable
 from enum import Enum
 
-
-global US13_Problems
+US13_Problems = []
 
 class EUS13_FAILURE(Enum):
     US13_FAIL_BIRTHDAYS_GT_2_DAYS_LT_8_MONTHS = 0
@@ -20,9 +19,6 @@ class cUS13_Failure:
 
 
 def US13_Test(hParser):
-    global US13_Problems
-
-    US13_Problems = []
     US13_Problems.clear()
 
     for family in hParser.families.values():
@@ -57,8 +53,6 @@ def US13_Test(hParser):
 
 
 def US13_DisplayResults(hParser):
-    global US13_Problems
-
     print("")
     print("US13 test failures:")
 
