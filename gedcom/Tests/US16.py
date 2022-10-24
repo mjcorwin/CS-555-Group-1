@@ -14,9 +14,6 @@ class cUS16_Failure:
         self.hNames = []
         self.failure_Type = None
 
-    def failed(self):
-        return True if self.failure_Type else False
-
 
 def US16_Test(hParser):
     US16_Problems.clear()
@@ -29,6 +26,7 @@ def US16_Test(hParser):
 
         last_name = None
 
+        # SMELL: Duplicated logic which is also mildly complex
         for child_id in f.children_ids:
             child = hParser.individuals[child_id]
             if not last_name:
@@ -45,8 +43,10 @@ def US16_Test(hParser):
             elif last_name != husband.last_name():
                 error.hFamily = f
                 error.failure_Type = EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME
+                # SMELL: Duplicated code actually led to a bug!
                 error.hNames.append(child.last_name())
 
+        # SMELL: Bad method, not obvious what this is checking
         if error.failure_Type:
             US16_Problems.append(error)
 
