@@ -1,4 +1,6 @@
+from datetime import date
 from prettytable import PrettyTable
+from gedcom.individual import *
 from enum import Enum
 
 US13_Problems = []
@@ -18,6 +20,13 @@ class cUS13_Failure:
         self.Failure_Type = None
 
 
+def US13_Days(date1, date2):
+    return (date1 - date2).days
+
+
+def US13_Months(date1, date2):
+    return (date1.year - date2.year) * 12 + date1.month - date2.month
+
 def US13_Test(hParser):
     US13_Problems.clear()
 
@@ -32,14 +41,12 @@ def US13_Test(hParser):
                 sibling1 = children[i]
                 sibling2 = children[j]
 
-                # initialize siblings birthdays
                 hSiblingDate1 = sibling1.birth_date
                 tSiblingDate2 = sibling2.birth_date
 
-
-                # Initialize >= 3 days and <= 8 months to output anomalies
-                daysDelta = (hSiblingDate1 - tSiblingDate2).days
-                monthsDelta = (hSiblingDate1.year - tSiblingDate2.year) * 12 + hSiblingDate1.month - tSiblingDate2.month
+                #Bad Smell #1: (refactor): abstract difference of days/months via functions
+                daysDelta = US13_Days(hSiblingDate1, tSiblingDate2)
+                monthsDelta = US13_Months(hSiblingDate1, tSiblingDate2)
 
                 if daysDelta >= 2 and monthsDelta <= 8:
                     NewFailureEntry = cUS13_Failure()
@@ -67,13 +74,21 @@ def US13_DisplayResults(hParser):
     ]
 
     for i in US13_Problems:
+        #Bad Smell #4 (refactor): abstain from repetitive usage;
+        sibling_A_ID = i.hSibling.id
+        sibling_A_DOB = i.hSibling.birth_date
+
+        sibling_B_ID = i.tSibling.id
+        sibling_B_DOB = i.tSibling.birth_date
+
+        diff_A_B_DOB = US13_Days(sibling_A_DOB, sibling_B_DOB)
         pt.add_row(
             [
-                i.hSibling.id,
-                i.hSibling.birth_date,
-                i.tSibling.id,
-                i.tSibling.birth_date,
-                (i.hSibling.birth_date - i.tSibling.birth_date).days,
+                sibling_A_ID,
+                sibling_A_DOB,
+                sibling_B_ID,
+                sibling_B_DOB,
+                diff_A_B_DOB,
                 str(i.Failure_Type),
             ]
         )
