@@ -59,4 +59,4 @@ class TestUS11:
         # errors = US11.US11({}, {family.id: family})
         # errors = US11.US11({}, hParser.individuals, hParser.families).US11_Problems;
         errors = US11.US11_ex(individuals, families)
-        assert len(errors) == 0
+        assert len(errors) == 4
