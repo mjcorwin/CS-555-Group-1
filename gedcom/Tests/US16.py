@@ -11,8 +11,20 @@ class EUS16_FAILURE(Enum):
 class cUS16_Failure:
     def __init__(self):
         self.hFamily = None
-        self.hNames = []
+        self.hNames = set()
         self.failure_Type = None
+
+    def failed(self):
+        return self.failure_Type != None
+
+
+def get_individuals(individuals_dict, ids=[]):
+    individuals = []
+
+    for id in ids:
+        individuals.append(individuals_dict[id])
+
+    return individuals
 
 
 def US16_Test(hParser):
@@ -26,28 +38,22 @@ def US16_Test(hParser):
 
         last_name = None
 
-        # SMELL: Duplicated logic which is also mildly complex
-        for child_id in f.children_ids:
-            child = hParser.individuals[child_id]
-            if not last_name:
-                last_name = child.last_name()
-            elif last_name != child.last_name():
-                error.hFamily = f
-                error.failure_Type = EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME
-                error.hNames.append(child.last_name())
-
+        individual_ids = f.children_ids
         if f.husband_id:
-            husband = hParser.individuals[f.husband_id]
+            individual_ids.append(f.husband_id)
+
+        individuals = get_individuals(hParser.individuals, individual_ids)
+
+        for individual in individuals:
             if not last_name:
-                last_name = husband.last_name()
-            elif last_name != husband.last_name():
+                last_name = individual.last_name()
+            elif last_name != individual.last_name():
                 error.hFamily = f
                 error.failure_Type = EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME
-                # SMELL: Duplicated code actually led to a bug!
-                error.hNames.append(child.last_name())
 
-        # SMELL: Bad method, not obvious what this is checking
-        if error.failure_Type:
+            error.hNames.add(individual.last_name())
+
+        if error.failed():
             US16_Problems.append(error)
 
 
@@ -56,7 +62,7 @@ def US16_DisplayResults():
     pt.field_names = ["ID", "Male Family Member Last Names", "Data Failure Type"]
 
     for p in US16_Problems:
-        pt.add_row([p.hFamily.id, ",".join(p.hNames), str(p.failure_Type)])
+        pt.add_row([p.hFamily.id, ", ".join(p.hNames), str(p.failure_Type)])
 
     print(pt.get_string())
     return pt.get_string()

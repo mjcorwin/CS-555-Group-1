@@ -52,6 +52,7 @@ class TestUS16:
 
         US16_Test(parser)
         assert len(US16_Problems) == 1
+        assert len(US16_Problems[0].hNames) == 2
 
     def test_family_with_husband_and_male_child_with_different_last_names(
         self, family, make_male_individual_with_last_name
@@ -68,3 +69,4 @@ class TestUS16:
 
         US16_Test(parser)
         assert len(US16_Problems) == 1
+        assert len(US16_Problems[0].hNames) == 2
