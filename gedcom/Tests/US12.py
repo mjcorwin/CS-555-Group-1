@@ -23,21 +23,21 @@ class cUS12_Failure:
         self.hFamily = {};
         self.Failure_Type = None;
 
-def US12_Test(hParser):
+def US12_ex(Individuals, Families):
     global US12_Problems;
 
     US12_Problems = [];
     US12_Problems.clear();
 
-    for i in hParser.families:
-        if (len(hParser.families[i].children_ids) > 0):
-            Father = hParser.individuals[hParser.families[i].husband_id];
-            Mother = hParser.individuals[hParser.families[i].wife_id];
+    for i in Families:
+        if (len(Families[i].children_ids) > 0):
+            Father = Individuals[Families[i].husband_id];
+            Mother = Individuals[Families[i].wife_id];
 
             US12_Failure = cUS12_Failure();
             
-            for j in hParser.families[i].children_ids:
-                Child = hParser.individuals[j];
+            for j in Families[i].children_ids:
+                Child = Individuals[j];
 
                 # Note: This does not take into account leap years! Relativedelta module could be used for that but that's
                 #       an external dependency.
@@ -45,11 +45,11 @@ def US12_Test(hParser):
                 MotherDifference = (Child.birth_date - Mother.birth_date).days / 365;
 
                 if (FatherDifference > 79):
-                    US12_Failure.hFamily = hParser.families[i];
+                    US12_Failure.hFamily = Families[i];
                     US12_Failure.Failure_Type = EUS12_FAILURE.US12_FAIL_FATHER_TOOOLD;
 
                 if (MotherDifference > 59):
-                    US12_Failure.hFamily = hParser.families[i];
+                    US12_Failure.hFamily = Families[i];
                     if (US12_Failure.Failure_Type == EUS12_FAILURE.US12_FAIL_FATHER_TOOOLD):
                         US12_Failure.Failure_Type = EUS12_FAILURE.US12_FAIL_BOTHPARENTS_TOOOLD;
                     else:
@@ -57,6 +57,11 @@ def US12_Test(hParser):
 
             if (US12_Failure.Failure_Type != None):
                 US12_Problems.append(US12_Failure);
+
+    return US12_Problems;
+
+def US12(hParser):
+    US12_ex(hParser.individuals, hParser.families);
 
 
 def US12_DisplayResults(hParser):
@@ -98,5 +103,5 @@ def US12_DisplayResults(hParser):
     return pt.get_string();
 
 def Execute(hParser):
-    US12_Test(hParser);
+    US12(hParser);
     return US12_DisplayResults(hParser);
