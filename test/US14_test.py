@@ -9,30 +9,22 @@ class TestUS14:
         assert len(US14_Problems) == 0
 
     
-    def test_two_siblings(self, individual, make_family_with_same_last_names, make_family_with_birth_dates):
+    def test_two_siblings(self, individual, make_family_with_birth_dates):
         parser = Parser(None)
-        wesley_surname = make_family_with_same_last_names(("Wesley, Wesley"))
-        wesley_birthdate = make_family_with_birth_dates("1990-01-01")
-
-        individual.id = wesley_surname.id
+        wesley_birthdate = make_family_with_birth_dates(("1990-01-01", "1990-01-01"))
         
         parser.individuals = {
-            individual.name: wesley_surname,
             individual.birth: wesley_birthdate 
         }
 
         US14_Test(parser)
         assert len(US14_Problems) == 0
 
-    def test_five_siblings(self, individual, make_family_with_same_last_names, make_family_with_birth_dates):
+    def test_five_siblings(self, individual, make_family_with_birth_dates):
         parser = Parser(None)
-        wesley_surname = make_family_with_same_last_names(("Wesley, Wesley, Wesley, Wesley, Wesley"))
-        wesley_birthdate = make_family_with_birth_dates("1990-01-01")
+        wesley_birthdate = make_family_with_birth_dates(("1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01", "1990-01-01"))
 
-        individual.id = wesley_surname.id
-        
         parser.individuals = {
-            individual.name: wesley_surname,
             individual.birth: wesley_birthdate 
         }
 

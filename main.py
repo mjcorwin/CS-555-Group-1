@@ -56,6 +56,10 @@ def main():
             parser
         )
 
+
+        #US21 - Correct Gender for Role
+        US21 = Tests.gedcom.Tests.US21.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -85,6 +89,9 @@ def main():
 
         print("US14: Multiple births <= 5")
         print(US14)
+
+        print("US21: Correct gender for role")
+        print(US21)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -132,6 +139,9 @@ def main():
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
+        outfile.write("\nUS21: Correct Gender for Role\n")
+        outfile.write(US21)
+
     Run_Tests(parser)
 
 
@@ -150,6 +160,7 @@ def Run_Tests(hParser):
     Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
+    Tests.US21.Execute(hParser)
 
 
 if __name__ == "__main__":
