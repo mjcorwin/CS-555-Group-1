@@ -26,7 +26,12 @@ def get_parser(filename):
 
 
 class TestUS09:
+    #TODO
     def test_alive_younger(self):
+        toParse = get_parser("us09test1.gedcom")
+        errors = US09.ExecuteTests(toParse)
+        assert len(errors) == 1
+    def test_alive_mom(self):
         toParse = get_parser("us09test1.gedcom")
         errors = US09.ExecuteTests(toParse)
         assert len(errors) == 1
