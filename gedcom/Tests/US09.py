@@ -81,7 +81,7 @@ def US09_Test(hParser):
 
 
 def US09_DisplayResults():
-    global US09_Problems;
+    
 
     print ("");
     print ("US09 test failures:");
@@ -115,3 +115,7 @@ def US09_DisplayResults():
 def Execute(hParser):
     US09_Test(hParser);
     return US09_DisplayResults();
+
+def ExecuteTests(hParser):
+    US09_Test(hParser)
+    return US09_Problems
