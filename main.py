@@ -69,7 +69,7 @@ def main():
         outfile.write("\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
-    Run_Tests(parser)
+    Run_UnitTests(parser)
 
 
 
@@ -80,6 +80,9 @@ def Run_Tests(hParser):
     Tests.US06.Execute(hParser);
     Tests.US07.Execute(hParser);
     Tests.US08.Execute(hParser);
+
+def Run_UnitTests(hParser):
+    Tests.US07.ExecuteTests(hParser);
 
 
 if __name__ == "__main__":
