@@ -54,32 +54,26 @@ def US21_DisplayResults(hParser):
 
     pt = PrettyTable();
     pt.field_names = [
-        "Wife ID",
-        "Husband ID",
-        "Incorrect Gender Role",
+        "Incorrect Gender Roles - By IDs",
+        "Incorrect Gender Roles - By Sex",
         "Data failure type"
     ];
 
     for i in US21_Problems:
 
-
-        wife = i.hFamily.wife_id
-        husband = i.hFamily.husband_id
-
-        IncorrectGender = (wife if i.hIndividual.sex != 'F' else husband if i.hIndividual.sex != 'M' else 1)
-
+        incorrect_gender_ids = (i.hIndividual.id if i.hFamily.wife_id == i.hIndividual.id else i.hIndividual.id if i.hFamily.husband_id == i.hIndividual.id else 1)
+        incorrect_gender_sex = (i.hIndividual.sex if i.hIndividual.sex != 'F' else i.hIndividual.sex if i.hIndividual.sex != 'M' else 1)
+        
         pt.add_row(
             [
-                wife,
-                husband,
-                IncorrectGender,
+                incorrect_gender_ids,
+                incorrect_gender_sex,
                 str(i.Failure_Type)
             ]
         );
 
     print (pt.get_string());
     return pt.get_string();
-    
 
 def Execute(hParser):
     US21_Test(hParser);
