@@ -49,6 +49,9 @@ def main():
             parser
         )
 
+        # US16 - More than 15 siblings
+        SAME_NAME_DIFFERENT_BIRTHDATE = Tests.gedcom.Tests.US23.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -71,6 +74,9 @@ def main():
 
         print("No marrying before 14")
         print(US10)
+
+        print("Same name different birthdate")
+        print(SAME_NAME_DIFFERENT_BIRTHDATE)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -112,6 +118,9 @@ def main():
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
+        outfile.write("\nSAME NAME DIFFERENT BIRTHDATE\n")
+        outfile.write(SAME_NAME_DIFFERENT_BIRTHDATE)
+
     Run_Tests(parser)
 
 
@@ -128,6 +137,7 @@ def Run_Tests(hParser):
     Tests.US12.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
+    Tests.US23.Execute(hParser)
 
 
 if __name__ == "__main__":
