@@ -1,19 +1,17 @@
 INDIVIDUALS
-+------+------------------+--------+------------+-----+-------+------------+---------+---------+
-|  ID  |       Name       | Gender |  Birthday  | Age | Alive |   Death    |  Child  |  Spouse |
-+------+------------------+--------+------------+-----+-------+------------+---------+---------+
-| I01  |   Joe /Smith/    |   F    | 2030-07-15 | -16 |  True | 2013-12-31 |   N/A   | {'F23'} |
-| I011 |   Emma /Smith/   |   F    | 1760-09-13 | 262 | False |    N/A     | {'F23'} |   N/A   |
-| I014 |  Thomas /Smith/  |   M    | 1750-09-13 | 152 |  True | 1902-12-31 | {'F23'} |   N/A   |
-| I07  | Jennifer /Smith/ |   M    | 1960-09-23 |  62 | False |    N/A     |   N/A   | {'F23'} |
-| I19  |   Dick /Smith/   |   M    | 1981-02-15 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I26  |   Jane /Smith/   |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I27  | Jasmine /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I28  | Jessica /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I29  |  Janice /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I30  |  Justin /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-| I31  | Justice /Smith/  |   F    | 1981-02-12 |  41 | False |    N/A     | {'F23'} |   N/A   |
-+------+------------------+--------+------------+-----+-------+------------+---------+---------+
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
+|  ID  |        Name        | Gender |  Birthday  | Age | Alive |   Death    |  Child   |  Spouse  |
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
+| @I1@ |  Lynn /Tompkins/   |   F    | 1845-09-02 | 177 | False |    N/A     |   N/A    | {'@F2@'} |
+| @I2@ |  Mark /Chambers/   |   M    | 1842-07-03 | 180 | False |    N/A     |   N/A    | {'@F1@'} |
+| @I3@ |  Jeffrey /Davis/   |   M    | 1944-06-10 |  78 | False |    N/A     |   N/A    | {'@F2@'} |
+| @I4@ |  Brad /Chambers/   |   M    | 1965-03-14 |  57 | False |    N/A     | {'@F2@'} |   N/A    |
+| @I5@ |  Ryan /Chambers/   |   M    | 1970-05-17 |  52 | False |    N/A     | {'@F1@'} | {'@F3@'} |
+| @I6@ | Jennifer /Collins/ |   F    | 1973-08-04 |  16 |  True | 1990-08-04 |   N/A    | {'@F3@'} |
+| @I7@ | Jessica /Collins/  |   F    | 1995-02-10 |  27 | False |    N/A     | {'@F3@'} | {'@F4@'} |
+| @I8@ |  Matthew /Klein/   |   M    | 2010-10-15 |  12 | False |    N/A     |   N/A    | {'@F4@'} |
+| @I9@ |  Ryan /Chambers/   |   M    | 1970-05-17 |  52 | False |    N/A     | {'@F1@'} | {'@F3@'} |
++------+--------------------+--------+------------+-----+-------+------------+----------+----------+
 FAMILIES
 +-----+------------+----------+------------+--------------+---------+------------------+-------------------------------------------------------------------+
 |  ID |  Married   | Divorced | Husband ID | Husband Name | Wife ID |    Wife Name     |                              Children                             |
@@ -32,11 +30,37 @@ MARRIAGE BEFORE DEATH
 | F23 |     I014     |   1950-02-14  |   1902-12-31  | EUS05_FAILURE.US05_FAIL_MARRIAGE_GT_DEATH |
 +-----+--------------+---------------+---------------+-------------------------------------------+
 DIVORCE BEFORE DEATH
-+-----+---------------+-----------------+---------------+------------------------------------------+
-|  ID | INDIVIDUAL ID | Date of Divorce | Date of death |            Data failure type             |
-+-----+---------------+-----------------+---------------+------------------------------------------+
-| F23 |      I014     |    1982-02-14   |   1902-12-31  | EUS06_FAILURE.US06_FAIL_DIVORCE_GT_DEATH |
-+-----+---------------+-----------------+---------------+------------------------------------------+
++------+---------------+-----------------+---------------+---------------------------------------------+
+|  ID  | INDIVIDUAL ID | Date of Divorce | Date of death |              Data failure type              |
++------+---------------+-----------------+---------------+---------------------------------------------+
+| @F1@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I2@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
+| @F1@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I2@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
+| @F3@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I2@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I4@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I5@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
+| @F4@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
++------+---------------+-----------------+---------------+---------------------------------------------+
 LESS THAN 150 YEARS OLD
 +------+----------------+------------+--------------------------------+
 |  ID  |      Name      |  Birthday  |       Data failure type        |
@@ -120,3 +144,14 @@ US21: Correct Gender for Role
 |   I07   |    I01     |          I01          | EUS21_FAILURE.US21_FAIL_INVALID_GENDER_ROLES |
 |   I07   |    I01     |          I07          | EUS21_FAILURE.US21_FAIL_INVALID_GENDER_ROLES |
 +---------+------------+-----------------------+----------------------------------------------+
+SAME NAME SAME BIRTHDATE
++-----------+-----------------+-------------+----------------------------------------------------------------------+
+|    IDs    | Individual Name | Birth Dates |                          Data Failure Type                           |
++-----------+-----------------+-------------+----------------------------------------------------------------------+
+| @I5@,@I9@ | Ryan /Chambers/ |  1970-05-17 | EUS23_FAILURE.US23_MORE_THAN_ONE_INDIVIDUAL_SAME_NAME_AND_BIRTH_DATE |
++-----------+-----------------+-------------+----------------------------------------------------------------------+
+SAME SPOUSE NAMES SAME MARRIAGE DATE
++-----+--------------+-----------+---------------+-------------------+
+| IDs | Husband Name | Wife Name | Marriage Date | Data Failure Type |
++-----+--------------+-----------+---------------+-------------------+
++-----+--------------+-----------+---------------+-------------------+

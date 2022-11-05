@@ -49,6 +49,15 @@ class Individual:
     def last_name(self):
         return self.name.split("/")[1]
 
+    def __hash__(self):
+        return hash(self.id)
+
+    def __eq__(self, other):
+        if isinstance(other, Individual):
+            return self.id == other.id
+
+        return False
+
 
 def timedelta_to_years(delta):
     seconds_in_year = 365.25 * 24 * 60 * 60

@@ -56,6 +56,12 @@ def main():
             parser
         )
 
+        # US23 - Individuals with same name and birthdate
+        SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
+
+        # US24 - Families with same spouse names and marriage date
+        SAME_SPOUSE_NAMES_SAME_MARRIED_DATE = Tests.gedcom.Tests.US24.Execute(parser)
+
 
         #US21 - Correct Gender for Role
         US21 = Tests.gedcom.Tests.US21.Execute(parser)
@@ -82,6 +88,12 @@ def main():
 
         print("No marrying before 14")
         print(US10)
+
+        print("Same name same birthdate")
+        print(SAME_NAME_SAME_BIRTH_DATE)
+
+        print("Same spouse names same marriage date")
+        print(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
 
         print("US13: Siblings Spacing")
@@ -139,6 +151,12 @@ def main():
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
+        outfile.write("\nSAME NAME SAME BIRTHDATE\n")
+        outfile.write(SAME_NAME_SAME_BIRTH_DATE)
+
+        outfile.write("\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
+        outfile.write(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
+
         outfile.write("\nUS21: Correct Gender for Role\n")
         outfile.write(US21)
 
@@ -160,6 +178,8 @@ def Run_Tests(hParser):
     Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
+    Tests.US23.Execute(hParser)
+    Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
 
 
