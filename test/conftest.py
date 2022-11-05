@@ -43,6 +43,14 @@ def make_individual():
 
 
 @pytest.fixture
+def make_family():
+    def make_family():
+        return Family("F" + str(random.randint(0, 10000)))
+
+    return make_family
+
+
+@pytest.fixture
 def make_male_individual_with_last_name():
     def make_individual(last_name):
         i = Individual("I" + str(random.randint(0, 10000)))

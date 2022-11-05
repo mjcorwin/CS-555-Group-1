@@ -125,9 +125,14 @@ MALE FAMILY MEMBER DIFFERENT LAST NAMES
 | @F2@ |            Chambers           | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
 | @F3@ |            Collins            | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
 +------+-------------------------------+---------------------------------------------------+
-SAME NAME DIFFERENT BIRTHDATE
+SAME NAME SAME BIRTHDATE
 +-----------+-----------------+-------------+----------------------------------------------------------------------+
 |    IDs    | Individual Name | Birth Dates |                          Data Failure Type                           |
 +-----------+-----------------+-------------+----------------------------------------------------------------------+
 | @I5@,@I9@ | Ryan /Chambers/ |  1970-05-17 | EUS23_FAILURE.US23_MORE_THAN_ONE_INDIVIDUAL_SAME_NAME_AND_BIRTH_DATE |
 +-----------+-----------------+-------------+----------------------------------------------------------------------+
+SAME SPOUSE NAMES SAME MARRIAGE DATE
++-----+--------------+-----------+---------------+-------------------+
+| IDs | Husband Name | Wife Name | Marriage Date | Data Failure Type |
++-----+--------------+-----------+---------------+-------------------+
++-----+--------------+-----------+---------------+-------------------+
