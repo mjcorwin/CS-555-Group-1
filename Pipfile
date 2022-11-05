@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 prettytable = "*"
+faker = "*"
 
 [dev-packages]
 black = "*"

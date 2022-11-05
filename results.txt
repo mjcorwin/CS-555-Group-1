@@ -10,6 +10,7 @@ INDIVIDUALS
 | @I6@ | Jennifer /Collins/ |   F    | 1973-08-04 |  16 |  True | 1990-08-04 |   N/A    | {'@F3@'} |
 | @I7@ | Jessica /Collins/  |   F    | 1995-02-10 |  27 | False |    N/A     | {'@F3@'} | {'@F4@'} |
 | @I8@ |  Matthew /Klein/   |   M    | 2010-10-15 |  12 | False |    N/A     |   N/A    | {'@F4@'} |
+| @I9@ |  Ryan /Chambers/   |   M    | 1970-05-17 |  52 | False |    N/A     | {'@F1@'} | {'@F3@'} |
 +------+--------------------+--------+------------+-----+-------+------------+----------+----------+
 FAMILIES
 +------+------------+----------+------------+-----------------+---------+--------------------+----------+
@@ -42,6 +43,7 @@ DIVORCE BEFORE DEATH
 | @F1@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F1@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F1@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F1@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I2@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
@@ -50,6 +52,7 @@ DIVORCE BEFORE DEATH
 | @F3@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F3@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F3@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F3@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I1@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I2@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I3@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
@@ -58,6 +61,7 @@ DIVORCE BEFORE DEATH
 | @F4@ |      @I6@     |                 |   1990-08-04  |      EUS06_FAILURE.US06_FAIL_NO_DIVORCE     |
 | @F4@ |      @I7@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 | @F4@ |      @I8@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
+| @F4@ |      @I9@     |                 |               | EUS06_FAILURE.US06_FAIL_NO_DIVORCE_NO_DEATH |
 +------+---------------+-----------------+---------------+---------------------------------------------+
 LESS THAN 150 YEARS OLD
 +------+-----------------+------------+--------------------------------+
@@ -121,3 +125,9 @@ MALE FAMILY MEMBER DIFFERENT LAST NAMES
 | @F2@ |            Chambers           | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
 | @F3@ |            Collins            | EUS16_FAILURE.US16_MALE_FAMILY_NOT_SAME_LAST_NAME |
 +------+-------------------------------+---------------------------------------------------+
+SAME NAME DIFFERENT BIRTHDATE
++-----------+-----------------+-------------+----------------------------------------------------------------------+
+|    IDs    | Individual Name | Birth Dates |                          Data Failure Type                           |
++-----------+-----------------+-------------+----------------------------------------------------------------------+
+| @I5@,@I9@ | Ryan /Chambers/ |  1970-05-17 | EUS23_FAILURE.US23_MORE_THAN_ONE_INDIVIDUAL_SAME_NAME_AND_BIRTH_DATE |
++-----------+-----------------+-------------+----------------------------------------------------------------------+

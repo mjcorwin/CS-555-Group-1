@@ -1,9 +1,12 @@
 import random
-from datetime import datetime, timedelta
-
 import pytest
+from datetime import datetime, timedelta
+from faker import Faker
+
 from gedcom.family import Family
 from gedcom.individual import Individual
+
+fake = Faker()
 
 
 @pytest.fixture
@@ -82,3 +85,16 @@ def add_siblings_to_family():
             family.children_ids.append("I" + str(random.randint(0, 10000)))
 
     return add_siblings
+
+
+@pytest.fixture
+def random_name():
+    return f"{fake.first_name()} /{fake.last_name()}/"
+
+
+@pytest.fixture
+def make_random_name():
+    def random_name():
+        return f"{fake.first_name()} /{fake.last_name()}/"
+
+    return random_name

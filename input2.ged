@@ -59,6 +59,16 @@
 2 DATE 17 MAY 1970
 1 FAMS @F3@
 1 FAMC @F1@
+0 @I9@ INDI
+1 NAME Ryan /Chambers/
+2 GIVN Ryan
+2 SURN Chambers
+2 _MARNM Chambers
+1 SEX M
+1 BIRT
+2 DATE 17 MAY 1970
+1 FAMS @F3@
+1 FAMC @F1@
 0 @I6@ INDI
 1 NAME Jennifer /Collins/
 2 GIVN Jennifer
