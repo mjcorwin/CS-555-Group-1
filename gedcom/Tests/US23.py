@@ -57,6 +57,7 @@ def US23_DisplayResults():
         name = individual.name
         date = individual.birth_date
         ids = [i.id for i in p.hIndividuals]
+        ids.sort()
 
         pt.add_row([",".join(ids), name, date, str(p.failure_Type)])
 
