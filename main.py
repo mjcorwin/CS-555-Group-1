@@ -66,6 +66,9 @@ def main():
         #US21 - Correct Gender for Role
         US21 = Tests.gedcom.Tests.US21.Execute(parser)
 
+        # US22 - Unique IDs
+        US22 = Tests.gedcom.Tests.US22.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -104,6 +107,9 @@ def main():
 
         print("US21: Correct gender for role")
         print(US21)
+
+        print("US22: Unique IDs")
+        print(US22)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -181,6 +187,7 @@ def Run_Tests(hParser):
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
+    Tests.US22.Execute(hParser)
 
 
 if __name__ == "__main__":
