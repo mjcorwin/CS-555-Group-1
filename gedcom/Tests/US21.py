@@ -14,7 +14,6 @@ DATE_FORMAT = "%Y-%m-%d";
 
 US21_Problems = []
 
-
 class EUS21_FAILURE(Enum):
     # Individuals
     US21_FAIL_INVALID_GENDER_ROLES = 0

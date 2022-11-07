@@ -166,6 +166,9 @@ def main():
         outfile.write("\nUS21: Correct Gender for Role\n")
         outfile.write(US21)
 
+        outfile.write("\nUS22: Unique IDs\n")
+        outfile.write(US22)
+
     Run_Tests(parser)
 
 

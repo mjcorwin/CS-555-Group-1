@@ -21,16 +21,13 @@ class EUS22_FAILURE(Enum):
 class cUS22_Failure:
     hFamily = None
     hIndividual = None
-    kv = None
     Failure_Type = None;
 
-    def __init__(self, kv=None):
+    def __init__(self):
         self.hFamily = None
-        self.kv = kv
         self.hIndividual = None
         self.Failure_Type = None;
     
-
 
 def get_common_individual_ids(hParser):
     unique_lst = []
@@ -48,9 +45,8 @@ def get_common_individual_ids(hParser):
                 duplicate_lst.append(hFamily_id)
                 duplicate_lst.append(hFamily_children_ids)
                 break
-        duplicate_individual_ids = [common for common in unique_lst if common in duplicate_lst]
-    return duplicate_individual_ids
-
+    return [common for common in unique_lst if common in duplicate_lst]
+    
 
 def get_common_family_ids(hParser):
     unique_lst = []
@@ -66,8 +62,7 @@ def get_common_family_ids(hParser):
                 duplicate_lst.append(hFamily_id)
                 break
     duplicate_lst.extend(unique_lst)
-    duplicate_individual_ids = [common for common in unique_lst if common in duplicate_lst]
-    return duplicate_individual_ids
+    return [common for common in unique_lst if common in duplicate_lst]
 
 def US22_Test(hParser):
     US22_Problems.clear();
