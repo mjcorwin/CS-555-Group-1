@@ -49,6 +49,12 @@ def main():
             parser
         )
 
+        # US17 - Not married to descendants
+        NOT_MARRIED_TO_DESCENDANTS = Tests.gedcom.Tests.US17.Execute(parser);
+
+        # US18 - Siblings should not marry
+        SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser);
+
         # US23 - Individuals with same name and birthdate
         SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
 
@@ -121,6 +127,14 @@ def main():
         outfile.write("\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
+        # US17 - Not married to descendants
+        outfile.write("\nNOT MARRIED TO DESCENDANTS\n");
+        outfile.write(NOT_MARRIED_TO_DESCENDANTS);
+
+        # US18 - Siblings should not marry
+        outfile.write("\nSIBLINGS NOT MARRIED\n");
+        outfile.write(SIBLINGS_NOT_MARRIED);
+
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
@@ -146,6 +160,8 @@ def Run_Tests(hParser):
     Tests.US12.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
+    Tests.US17.Execute(hParser);
+    Tests.US18.Execute(hParser);
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
 
