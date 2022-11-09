@@ -10,5 +10,7 @@ import gedcom.Tests.US11
 import gedcom.Tests.US12
 import gedcom.Tests.US15
 import gedcom.Tests.US16
+import gedcom.Tests.US17;
+import gedcom.Tests.US18;
 import gedcom.Tests.US23
 import gedcom.Tests.US24
