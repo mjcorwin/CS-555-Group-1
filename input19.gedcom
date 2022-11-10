@@ -1,0 +1,79 @@
+0 @I1@ INDI
+1 NAME Abby /Able/
+2 GIVN Abby
+2 SURN Able
+2 _MARNM Able
+1 SEX F
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I2@ INDI
+1 NAME Charlie /Able/
+2 GIVN Charlie
+2 SURN Able
+2 _MARNM Able
+1 SEX M
+1 FAMS @F2@
+0 @I3@ INDI
+1 NAME Becca /Able/
+2 GIVN Becca
+2 SURN Able
+2 _MARNM Able
+1 SEX F
+1 FAMS @F2@
+1 FAMC @F4@
+0 @I4@ INDI
+1 NAME Andy /Barns/
+2 GIVN Andy
+2 SURN Barns
+2 _MARNM Barns
+1 FAMS @F1@
+1 FAMC @F3@
+0 @I5@ INDI
+1 NAME Barry /Barns/
+2 GIVN Barry
+2 SURN Barns
+2 _MARNM Barns
+1 SEX M
+1 FAMS @F3@
+0 @I6@ INDI
+1 NAME Angelina /Able/
+2 GIVN Angelina
+2 SURN Able
+2 _MARNM Barns
+1 SEX F
+1 FAMS @F3@
+1 FAMC @F4@
+0 @I7@ INDI
+1 NAME /Able/
+2 SURN Able
+2 _MARNM Able
+1 SEX M
+1 FAMS @F4@
+0 @I8@ INDI
+1 NAME Maranda /Able/
+2 GIVN Maranda
+2 SURN Able
+2 _MARNM Able
+1 SEX F
+1 FAMS @F4@
+0 @F1@ FAM
+1 HUSB @I4@
+1 WIFE @I1@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F2@ FAM
+1 HUSB @I2@
+1 WIFE @I3@
+1 CHIL @I1@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F3@ FAM
+1 HUSB @I5@
+1 WIFE @I6@
+1 CHIL @I4@
+1 _CURRENT Y
+1 _PRIMARY Y
+0 @F4@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+1 CHIL @I6@

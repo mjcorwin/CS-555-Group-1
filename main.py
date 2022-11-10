@@ -62,6 +62,8 @@ def main():
         # US18 - Siblings should not marry
         SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser);
 
+        COUSINS_NOT_MARRIED = Tests.gedcom.Tests.US19.Execute(parser);
+
         # US23 - Individuals with same name and birthdate
         SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
 
@@ -110,6 +112,9 @@ def main():
 
         print("US14: Multiple births <= 5")
         print(US14)
+
+        print("US19: No cousins married")
+        print(COUSINS_NOT_MARRIED)
 
         print("US21: Correct gender for role")
         print(US21)
