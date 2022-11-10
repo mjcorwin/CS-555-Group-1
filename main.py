@@ -5,7 +5,7 @@ from gedcom.parser import Parser
 
 from gedcom import Tests
 
-INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input2.ged")
+INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input3.gedcom")
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
@@ -41,6 +41,13 @@ def main():
         # US12 - Parents not too old
         PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser)
 
+        # US13 - SIBLINGS SPACING
+        US13 = Tests.gedcom.Tests.US13.Execute(parser);
+
+
+        # US14 - MULTIPLE BIRTHS <= 5
+        US14 = Tests.gedcom.Tests.US14.Execute(parser);
+
         # US15 - More than 15 siblings
         TOO_MANY_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
 
@@ -60,6 +67,13 @@ def main():
 
         # US24 - Families with same spouse names and marriage date
         SAME_SPOUSE_NAMES_SAME_MARRIED_DATE = Tests.gedcom.Tests.US24.Execute(parser)
+
+
+        #US21 - Correct Gender for Role
+        US21 = Tests.gedcom.Tests.US21.Execute(parser)
+
+        # US22 - Unique IDs
+        US22 = Tests.gedcom.Tests.US22.Execute(parser)
 
         print("INDIVIDUALS")
         print(individuals_table)
@@ -89,6 +103,19 @@ def main():
 
         print("Same spouse names same marriage date")
         print(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
+
+
+        print("US13: Siblings Spacing")
+        print(US13)
+
+        print("US14: Multiple births <= 5")
+        print(US14)
+
+        print("US21: Correct gender for role")
+        print(US21)
+
+        print("US22: Unique IDs")
+        print(US22)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -124,6 +151,12 @@ def main():
         outfile.write("\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
+        outfile.write("\nUS13: SIBLINGS SPACING\n")
+        outfile.write(US13)
+
+        outfile.write("\nUS14: Multiple Births > 5\n")
+        outfile.write(US14)
+
         outfile.write("\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
@@ -144,6 +177,12 @@ def main():
         outfile.write("\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
         outfile.write(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
+        outfile.write("\nUS21: Correct Gender for Role\n")
+        outfile.write(US21)
+
+        outfile.write("\nUS22: Unique IDs\n")
+        outfile.write(US22)
+
     Run_Tests(parser)
 
 
@@ -158,12 +197,16 @@ def Run_Tests(hParser):
     Tests.US10.Execute(hParser)
     Tests.US11.Execute(hParser)
     Tests.US12.Execute(hParser)
+    Tests.US13.Execute(hParser)
+    Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
     Tests.US17.Execute(hParser);
     Tests.US18.Execute(hParser);
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
+    Tests.US21.Execute(hParser)
+    Tests.US22.Execute(hParser)
 
 
 if __name__ == "__main__":
