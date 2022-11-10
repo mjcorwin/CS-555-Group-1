@@ -59,4 +59,4 @@ class TestUS17:
         # errors = US17.US17({}, {family.id: family})
         # errors = US17.US17({}, hParser.individuals, hParser.families).US17_Problems;
         errors = US17.US17_ex(individuals, families)
-        assert len(errors) == 4
+        assert len(errors) == 0
