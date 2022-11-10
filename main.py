@@ -6,6 +6,7 @@ from gedcom.parser import Parser
 from gedcom import Tests
 
 INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input3.gedcom")
+INPUT_FILE_PATH2 = path.join(path.dirname(path.realpath(__file__)), "input19.gedcom")
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
@@ -13,6 +14,9 @@ def main():
     with open(INPUT_FILE_PATH) as infile:
         parser = Parser(infile)
         parser.parse()
+    with open(INPUT_FILE_PATH2) as infile2:
+        parser2 = Parser(infile2)
+        parser2.parse()
 
     with open(OUTPUT_FILE_PATH, "w") as outfile:
         validations = "\n".join(validator.validate(parser.individuals, parser.families))
@@ -62,7 +66,7 @@ def main():
         # US18 - Siblings should not marry
         SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser);
 
-        COUSINS_NOT_MARRIED = Tests.gedcom.Tests.US19.Execute(parser);
+        US19 = Tests.gedcom.Tests.US19.Execute(parser2);
 
         # US23 - Individuals with same name and birthdate
         SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
@@ -114,7 +118,7 @@ def main():
         print(US14)
 
         print("US19: No cousins married")
-        print(COUSINS_NOT_MARRIED)
+        print(US19)
 
         print("US21: Correct gender for role")
         print(US21)
@@ -173,6 +177,9 @@ def main():
         outfile.write("\nSIBLINGS NOT MARRIED\n");
         outfile.write(SIBLINGS_NOT_MARRIED);
 
+        outfile.write("\nUS19: COUSINS NOT MARRIED\n")
+        outfile.write(US19)
+
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
@@ -188,10 +195,10 @@ def main():
         outfile.write("\nUS22: Unique IDs\n")
         outfile.write(US22)
 
-    Run_Tests(parser)
+    Run_Tests(parser,parser2)
 
-
-def Run_Tests(hParser):
+#this code is messy... why are we doing twice? -TJP
+def Run_Tests(hParser, hParser2):
     Tests.US03.Execute(hParser)
     Tests.US04.Execute(hParser)
     Tests.US05.Execute(hParser)
@@ -208,6 +215,8 @@ def Run_Tests(hParser):
     Tests.US16.Execute(hParser)
     Tests.US17.Execute(hParser);
     Tests.US18.Execute(hParser);
+    Tests.US19.Execute(hParser2);
+    Tests.US20.Execute(hParser2)
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)

@@ -9,20 +9,21 @@ SECONDS_IN_YEAR = 365.25 * 24 * 60 * 60;
 DATE_FORMAT = "%Y-%m-%d";
 
 
-# US19 - No cousin marriages
+# US20 - No marrying uncles or aunts
 
 global hParser;
-global US19_Problems;
+global US20_Problems;
 
-class EUS19_FAILURE(Enum):
-    US19_FAIL_1stCOUSINS_MARRIAGE = 0
+class EUS20_FAILURE(Enum):
+    US20_FAIL_1stCOUSINS_MARRIAGE = 0
 
 
 
-class cUS19_Failure:
+class cUS20_Failure:
     HusbID = None;
     WifeID = None;
     FamilyID = None;
+    BadSpouse = None;
 
     Failure_Type = None;
 
@@ -40,10 +41,10 @@ def bugp(text):
     
 
 #get husband and wife pairing
-def US19_Test(hParser):
-    global US19_Problems
-    US19_Problems = {};
-    US19_Problems.clear();
+def US20_Test(hParser):
+    global US20_Problems
+    US20_Problems = {};
+    US20_Problems.clear();
     
     for i in hParser.families:
             hFamily = hParser.families[i]
@@ -65,82 +66,79 @@ def US19_Test(hParser):
                 hd_id = None;
                 husb_mom = None;
                 hm_id = None;
+                hFam = None;
+
                 wife_mom = None;
                 wm_id = None;
                 wife_dad = None;
                 wd_id = None;
+                wFam = None;
 
                 #get parents
                 for j in hParser.families:
                     if husb.id in hParser.families[j].children_ids:
                         husb_dad = hParser.families[j].husband_id;
                         husb_mom = hParser.families[j].wife_id;
+                        hFam = hParser.families[j].id
+
                     if wife.id in hParser.families[j].children_ids:
                         wife_dad = hParser.families[j].husband_id;
                         wife_mom = hParser.families[j].wife_id;
+                        wFam = hParser.families[j].id
                 
+
+
                 for j in hParser.families:
                     if husb_dad in hParser.families[j].children_ids:
                         hd_id = hParser.families[j].id
-                        bugp("HD = " + hd_id)
                     if husb_mom in hParser.families[j].children_ids:
                         hm_id = hParser.families[j].id
-                        bugp("HM = " + hm_id)
+            
                     if wife_dad in hParser.families[j].children_ids:
                         wd_id = hParser.families[j].id
-                        bugp("WD = " + wd_id)
+                       
                     if wife_mom in hParser.families[j].children_ids:
                         wm_id = hParser.families[j].id
-                        bugp("WM = " + wm_id)
                 
                 fam_ids = [hd_id, hm_id, wd_id, wm_id];
 
+                if hFam in fam_ids and hFam is not None:
+                    NewFailureEntry = cUS20_Failure();
+                    NewFailureEntry.HusbID = husb.id
+                    NewFailureEntry.WifeID = wife.id
+                    NewFailureEntry.FamilyID = hFamily.id
+                    NewFailureEntry.BadSpouse = "Uncle"
+                    US20_Problems[len(US20_Problems)] = NewFailureEntry
+                elif wFam in fam_ids and wFam is not None:
+                    NewFailureEntry = cUS20_Failure();
+                    NewFailureEntry.HusbID = husb.id
+                    NewFailureEntry.WifeID = wife.id
+                    NewFailureEntry.FamilyID = hFamily.id
+                    NewFailureEntry.BadSpouse = "Aunt"
+                    US20_Problems[len(US20_Problems)] = NewFailureEntry
 
-                if fam_ids.count(hd_id) > 1 and hd_id is not None:
-                    NewFailureEntry = cUS19_Failure();
-                    NewFailureEntry.HusbID = husb.id
-                    NewFailureEntry.WifeID = wife.id
-                    NewFailureEntry.FamilyID = hd_id;
-                    US19_Problems[len(US19_Problems)] = NewFailureEntry
-                elif fam_ids.count(hm_id) > 1 and hm_id is not None:
-                    NewFailureEntry = cUS19_Failure();
-                    NewFailureEntry.HusbID = husb.id
-                    NewFailureEntry.WifeID = wife.id
-                    NewFailureEntry.FamilyID = hm_id;
-                    US19_Problems[len(US19_Problems)] = NewFailureEntry
-                elif fam_ids.count(wd_id) > 1 and wd_id is not None:
-                    NewFailureEntry = cUS19_Failure();
-                    NewFailureEntry.HusbID = husb.id
-                    NewFailureEntry.WifeID = wife.id
-                    NewFailureEntry.FamilyID = wd_id;
-                    US19_Problems[len(US19_Problems)] = NewFailureEntry
-                elif fam_ids.count(wm_id) > 1 and wm_id is not None:
-                    NewFailureEntry = cUS19_Failure();
-                    NewFailureEntry.HusbID = husb.id
-                    NewFailureEntry.WifeID = wife.id
-                    NewFailureEntry.FamilyID = wm_id;
-                    US19_Problems[len(US19_Problems)] = NewFailureEntry
+    return US20_Problems
 
-    return US19_Problems
-
-def US19_DisplayResults():
-    global US19_Problems;
+def US20_DisplayResults():
+    global US20_Problems;
     print ("");
-    print ("US19 test failures:");
+    print ("US20 test failures:");
 
     pt = PrettyTable();
     pt.field_names = [
-        "Parents Family ID",
+        "Family ID",
         "Husband ID",
-        "Wife ID"
+        "Wife ID",
+        "Bad Spouse Role"
     ];
 
-    for i in US19_Problems:
+    for i in US20_Problems:
         pt.add_row(
             [
-                US19_Problems[i].FamilyID,
-                US19_Problems[i].HusbID,
-                US19_Problems[i].WifeID,
+                US20_Problems[i].FamilyID,
+                US20_Problems[i].HusbID,
+                US20_Problems[i].WifeID,
+                US20_Problems[i].BadSpouse
                 
             ]
         );
@@ -150,8 +148,8 @@ def US19_DisplayResults():
     return pt.get_string();
 
 def Execute(hParser):
-    US19_Test(hParser);
-    return US19_DisplayResults();
+    US20_Test(hParser);
+    return US20_DisplayResults();
 
             #For a couple, get their parents family information. If parents are part of the same family, fail
 
