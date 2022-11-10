@@ -20,18 +20,13 @@ def get_parser(filename):
                 parser.parse()
         return parser
 
-
-
-
-
-
 class TestUS09:
     #TODO
-    def test_alive_younger(self):
+    def test_birth_before_marriage(self):
         toParse = get_parser("us09test1.gedcom")
         errors = US09.ExecuteTests(toParse)
         assert len(errors) == 1
-    def test_alive_mom(self):
-        toParse = get_parser("us09test1.gedcom")
+    def test_birth_after_death(self):
+        toParse = get_parser("us09test2.gedcom")
         errors = US09.ExecuteTests(toParse)
         assert len(errors) == 1
