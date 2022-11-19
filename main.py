@@ -75,6 +75,13 @@ def main():
         # US22 - Unique IDs
         US22 = Tests.gedcom.Tests.US22.Execute(parser)
 
+
+        #US29 - List deceased
+        US29 = Tests.gedcom.Tests.US29.Execute(parser)
+
+        #US30 - List living married
+        US30 = Tests.gedcom.Tests.US30.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -116,6 +123,12 @@ def main():
 
         print("US22: Unique IDs")
         print(US22)
+
+        print("US29: List deceased")
+        print(US29)
+
+        print("US30: List living married")
+        print(US30)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -207,6 +220,8 @@ def Run_Tests(hParser):
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
     Tests.US22.Execute(hParser)
+    Tests.US29.Execute(hParser)
+    Tests.US30.Execute(hParser)
 
 
 if __name__ == "__main__":
