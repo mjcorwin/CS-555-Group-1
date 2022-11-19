@@ -137,6 +137,16 @@ TOO MANY SIBLINGS
 | ID | Number of Siblings | Data Failure Type |
 +----+--------------------+-------------------+
 +----+--------------------+-------------------+
+NOT MARRIED TO DESCENDANTS
++-----------+---------+--------------+
+| Family ID | Spouses | Failure type |
++-----------+---------+--------------+
++-----------+---------+--------------+
+SIBLINGS NOT MARRIED
++-----------+---------+--------------+
+| Family ID | Spouses | Failure type |
++-----------+---------+--------------+
++-----------+---------+--------------+
 MALE FAMILY MEMBER DIFFERENT LAST NAMES
 +----+-------------------------------+-------------------+
 | ID | Male Family Member Last Names | Data Failure Type |
