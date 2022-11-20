@@ -67,6 +67,7 @@ def make_family_with_birth_dates():
         i = Individual("I" + str(random.randint(0, 10000)))
         i.birth = f" /{birth_dates}"
         return i
+
     return make_sibling_birth_dates
 
 

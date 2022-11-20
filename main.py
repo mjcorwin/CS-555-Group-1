@@ -75,6 +75,9 @@ def main():
         # US22 - Unique IDs
         US22 = Tests.gedcom.Tests.US22.Execute(parser)
 
+        # US31 - List individuals over 30 and not married
+        US31 = Tests.gedcom.Tests.US31.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -104,7 +107,6 @@ def main():
         print("Same spouse names same marriage date")
         print(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
-
         print("US13: Siblings Spacing")
         print(US13)
 
@@ -116,6 +118,9 @@ def main():
 
         print("US22: Unique IDs")
         print(US22)
+
+        print("US31: List individuals over 30 and not married")
+        print(US31)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -161,12 +166,10 @@ def main():
         outfile.write(TOO_MANY_SIBLINGS)
 
         # US17 - Not married to descendants
-        outfile.write("\nNOT MARRIED TO DESCENDANTS\n");
-        outfile.write(NOT_MARRIED_TO_DESCENDANTS);
+        outfile.write("\nNOT MARRIED TO DESCENDANTS\n")
 
         # US18 - Siblings should not marry
-        outfile.write("\nSIBLINGS NOT MARRIED\n");
-        outfile.write(SIBLINGS_NOT_MARRIED);
+        outfile.write("\nSIBLINGS NOT MARRIED\n")
 
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
@@ -182,6 +185,9 @@ def main():
 
         outfile.write("\nUS22: Unique IDs\n")
         outfile.write(US22)
+
+        outfile.write("\nUS31: List individuals over 30 and not married\n")
+        outfile.write(US31)
 
     Run_Tests(parser)
 
@@ -207,6 +213,7 @@ def Run_Tests(hParser):
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
     Tests.US22.Execute(hParser)
+    Tests.US31.Execute(hParser)
 
 
 if __name__ == "__main__":
