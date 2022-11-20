@@ -42,11 +42,10 @@ def main():
         PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser)
 
         # US13 - SIBLINGS SPACING
-        US13 = Tests.gedcom.Tests.US13.Execute(parser);
-
+        US13 = Tests.gedcom.Tests.US13.Execute(parser)
 
         # US14 - MULTIPLE BIRTHS <= 5
-        US14 = Tests.gedcom.Tests.US14.Execute(parser);
+        US14 = Tests.gedcom.Tests.US14.Execute(parser)
 
         # US15 - More than 15 siblings
         TOO_MANY_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
@@ -57,10 +56,10 @@ def main():
         )
 
         # US17 - Not married to descendants
-        NOT_MARRIED_TO_DESCENDANTS = Tests.gedcom.Tests.US17.Execute(parser);
+        NOT_MARRIED_TO_DESCENDANTS = Tests.gedcom.Tests.US17.Execute(parser)
 
         # US18 - Siblings should not marry
-        SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser);
+        SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser)
 
         # US23 - Individuals with same name and birthdate
         SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
@@ -68,8 +67,7 @@ def main():
         # US24 - Families with same spouse names and marriage date
         SAME_SPOUSE_NAMES_SAME_MARRIED_DATE = Tests.gedcom.Tests.US24.Execute(parser)
 
-
-        #US21 - Correct Gender for Role
+        # US21 - Correct Gender for Role
         US21 = Tests.gedcom.Tests.US21.Execute(parser)
 
         # US22 - Unique IDs
@@ -167,9 +165,11 @@ def main():
 
         # US17 - Not married to descendants
         outfile.write("\nNOT MARRIED TO DESCENDANTS\n")
+        outfile.write(NOT_MARRIED_TO_DESCENDANTS)
 
         # US18 - Siblings should not marry
         outfile.write("\nSIBLINGS NOT MARRIED\n")
+        outfile.write(SIBLINGS_NOT_MARRIED)
 
         outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
@@ -207,8 +207,8 @@ def Run_Tests(hParser):
     Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
-    Tests.US17.Execute(hParser);
-    Tests.US18.Execute(hParser);
+    Tests.US17.Execute(hParser)
+    Tests.US18.Execute(hParser)
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
