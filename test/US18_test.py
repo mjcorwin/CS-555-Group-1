@@ -51,7 +51,7 @@ class TestUS18:
     def test_individual_no_bigamy(self, individuals, families):
         # errors = US18.US18({}, {family.id: family})
         errors = US18.US18_ex(individuals, families)
-        assert len(errors) == 3
+        assert len(errors) == 0
 
 
 #'''
