@@ -18,8 +18,5 @@ import gedcom.Tests.US21
 import gedcom.Tests.US22
 import gedcom.Tests.US23
 import gedcom.Tests.US24
-<<<<<<< HEAD
 import gedcom.Tests.US31
-=======
 import gedcom.Tests.US32
->>>>>>> 7b873d1 (US32 with tests)

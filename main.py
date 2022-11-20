@@ -75,6 +75,8 @@ def main():
 
         # US31 - List individuals over 30 and not married
         US31 = Tests.gedcom.Tests.US31.Execute(parser)
+
+        # US32 - List multiple births
         US32 = Tests.gedcom.Tests.US32.Execute(parser)
 
         print("INDIVIDUALS")
