@@ -67,7 +67,29 @@ def make_family_with_birth_dates():
         i = Individual("I" + str(random.randint(0, 10000)))
         i.birth = f" /{birth_dates}"
         return i
+
     return make_sibling_birth_dates
+
+
+@pytest.fixture
+def make_individual_with_birth_dates():
+    def make_living_person(birth_dates, death_dates):
+        i = Individual("I" + str(random.randint(0, 10000)))
+        i.birth = f" /{birth_dates}"
+        i.death = f" /{death_dates}"
+
+        return (i if i.birth != i.death else 1)
+    return make_living_person
+
+@pytest.fixture
+def make_marriage_with_death():
+    def make_dead_person(death_date, married_date):
+        i = Individual("I" + str(random.randint(0, 10000)))
+        i.death = f" /{death_date}"
+        f = Family("F" + str(random.randint(0, 10000)))
+        f.married = f" /{married_date}"
+        return (i, f if i.death == True and f.married == True else 1)
+    return make_dead_person
 
 
 @pytest.fixture
