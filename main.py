@@ -76,6 +76,9 @@ def main():
         # US31 - List individuals over 30 and not married
         US31 = Tests.gedcom.Tests.US31.Execute(parser)
 
+        # US32 - List multiple births
+        US32 = Tests.gedcom.Tests.US32.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -119,6 +122,9 @@ def main():
 
         print("US31: List individuals over 30 and not married")
         print(US31)
+
+        print("US32: List multiple births")
+        print(US32)
 
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
@@ -189,6 +195,9 @@ def main():
         outfile.write("\nUS31: List individuals over 30 and not married\n")
         outfile.write(US31)
 
+        outfile.write("\nUS32: List multiple births\n")
+        outfile.write(US32)
+
     Run_Tests(parser)
 
 
@@ -214,6 +223,7 @@ def Run_Tests(hParser):
     Tests.US21.Execute(hParser)
     Tests.US22.Execute(hParser)
     Tests.US31.Execute(hParser)
+    Tests.US32.Execute(hParser)
 
 
 if __name__ == "__main__":
