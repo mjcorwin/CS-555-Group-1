@@ -79,6 +79,13 @@ def main():
         # US32 - List multiple births
         US32 = Tests.gedcom.Tests.US32.Execute(parser)
 
+
+        #US29 - List deceased
+        US29 = Tests.gedcom.Tests.US29.Execute(parser)
+
+        #US30 - List living married
+        US30 = Tests.gedcom.Tests.US30.Execute(parser)
+
         print("INDIVIDUALS")
         print(individuals_table)
         print("FAMILIES")
@@ -126,6 +133,12 @@ def main():
         print("US32: List multiple births")
         print(US32)
 
+        print("US29: List deceased")
+        print(US29)
+
+        print("US30: List living married")
+        print(US30)
+
         outfile.write("INDIVIDUALS\n")
         outfile.write(individuals_table)
         outfile.write("\nFAMILIES\n")
@@ -139,34 +152,34 @@ def main():
         outfile.write("\nDIVORCE BEFORE DEATH\n")
         outfile.write(divorce_before_death)
 
-        outfile.write("\nLESS THAN 150 YEARS OLD\n")
+        outfile.write("\n\nLESS THAN 150 YEARS OLD\n")
         outfile.write(LT_150)
 
-        outfile.write("\nBorn before marriage or after divorce\n")
+        outfile.write("\n\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
-        outfile.write("\nBorn after death of parent(s)\n")
+        outfile.write("\n\nBorn after death of parent(s)\n")
         outfile.write(US09)
 
-        outfile.write("\nMarried before either spouse is 14\n")
+        outfile.write("\n\nMarried before either spouse is 14\n")
         outfile.write(US10)
 
-        outfile.write("\nNO BIGAMY\n")
+        outfile.write("\n\nNO BIGAMY\n")
         outfile.write(NO_BIGAMY)
 
-        outfile.write("\nPARENTS NOT TOO OLD\n")
+        outfile.write("\n\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
-        outfile.write("\nPARENTS NOT TOO OLD\n")
+        outfile.write("\n\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
-        outfile.write("\nUS13: SIBLINGS SPACING\n")
+        outfile.write("\n\nUS13: SIBLINGS SPACING\n")
         outfile.write(US13)
 
-        outfile.write("\nUS14: Multiple Births > 5\n")
+        outfile.write("\n\nUS14: Multiple Births > 5\n")
         outfile.write(US14)
 
-        outfile.write("\nTOO MANY SIBLINGS\n")
+        outfile.write("\n\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
         # US17 - Not married to descendants
@@ -177,19 +190,19 @@ def main():
         outfile.write("\nSIBLINGS NOT MARRIED\n")
         outfile.write(SIBLINGS_NOT_MARRIED)
 
-        outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
+        outfile.write("\n\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
-        outfile.write("\nSAME NAME SAME BIRTHDATE\n")
+        outfile.write("\n\nSAME NAME SAME BIRTHDATE\n")
         outfile.write(SAME_NAME_SAME_BIRTH_DATE)
 
-        outfile.write("\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
+        outfile.write("\n\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
         outfile.write(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
-        outfile.write("\nUS21: Correct Gender for Role\n")
+        outfile.write("\n\n\nUS21: Correct Gender for Role\n")
         outfile.write(US21)
 
-        outfile.write("\nUS22: Unique IDs\n")
+        outfile.write("\n\nUS22: Unique IDs\n")
         outfile.write(US22)
 
         outfile.write("\nUS31: List individuals over 30 and not married\n")
@@ -197,6 +210,12 @@ def main():
 
         outfile.write("\nUS32: List multiple births\n")
         outfile.write(US32)
+
+        outfile.write("\n\nUS29: List deceased\n")
+        outfile.write(US29)
+
+        outfile.write("\n\nUS30: List living married\n")
+        outfile.write(US30)
 
     Run_Tests(parser)
 
@@ -224,6 +243,8 @@ def Run_Tests(hParser):
     Tests.US22.Execute(hParser)
     Tests.US31.Execute(hParser)
     Tests.US32.Execute(hParser)
+    Tests.US29.Execute(hParser)
+    Tests.US30.Execute(hParser)
 
 
 if __name__ == "__main__":
