@@ -42,11 +42,10 @@ def main():
         PARENTS_NOT_TOO_OLD = Tests.gedcom.Tests.US12.Execute(parser)
 
         # US13 - SIBLINGS SPACING
-        US13 = Tests.gedcom.Tests.US13.Execute(parser);
-
+        US13 = Tests.gedcom.Tests.US13.Execute(parser)
 
         # US14 - MULTIPLE BIRTHS <= 5
-        US14 = Tests.gedcom.Tests.US14.Execute(parser);
+        US14 = Tests.gedcom.Tests.US14.Execute(parser)
 
         # US15 - More than 15 siblings
         TOO_MANY_SIBLINGS = Tests.gedcom.Tests.US15.Execute(parser)
@@ -57,10 +56,10 @@ def main():
         )
 
         # US17 - Not married to descendants
-        NOT_MARRIED_TO_DESCENDANTS = Tests.gedcom.Tests.US17.Execute(parser);
+        NOT_MARRIED_TO_DESCENDANTS = Tests.gedcom.Tests.US17.Execute(parser)
 
         # US18 - Siblings should not marry
-        SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser);
+        SIBLINGS_NOT_MARRIED = Tests.gedcom.Tests.US18.Execute(parser)
 
         # US23 - Individuals with same name and birthdate
         SAME_NAME_SAME_BIRTH_DATE = Tests.gedcom.Tests.US23.Execute(parser)
@@ -68,12 +67,14 @@ def main():
         # US24 - Families with same spouse names and marriage date
         SAME_SPOUSE_NAMES_SAME_MARRIED_DATE = Tests.gedcom.Tests.US24.Execute(parser)
 
-
-        #US21 - Correct Gender for Role
+        # US21 - Correct Gender for Role
         US21 = Tests.gedcom.Tests.US21.Execute(parser)
 
         # US22 - Unique IDs
         US22 = Tests.gedcom.Tests.US22.Execute(parser)
+
+        # US31 - List individuals over 30 and not married
+        US31 = Tests.gedcom.Tests.US31.Execute(parser)
 
 
         #US29 - List deceased
@@ -111,7 +112,6 @@ def main():
         print("Same spouse names same marriage date")
         print(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
-
         print("US13: Siblings Spacing")
         print(US13)
 
@@ -123,6 +123,9 @@ def main():
 
         print("US22: Unique IDs")
         print(US22)
+
+        print("US31: List individuals over 30 and not married")
+        print(US31)
 
         print("US29: List deceased")
         print(US29)
@@ -174,12 +177,12 @@ def main():
         outfile.write(TOO_MANY_SIBLINGS)
 
         # US17 - Not married to descendants
-        outfile.write("\n\nNOT MARRIED TO DESCENDANTS\n");
-        outfile.write(NOT_MARRIED_TO_DESCENDANTS);
+        outfile.write("\nNOT MARRIED TO DESCENDANTS\n")
+        outfile.write(NOT_MARRIED_TO_DESCENDANTS)
 
         # US18 - Siblings should not marry
-        outfile.write("\n\nSIBLINGS NOT MARRIED\n");
-        outfile.write(SIBLINGS_NOT_MARRIED);
+        outfile.write("\nSIBLINGS NOT MARRIED\n")
+        outfile.write(SIBLINGS_NOT_MARRIED)
 
         outfile.write("\n\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
@@ -195,6 +198,9 @@ def main():
 
         outfile.write("\n\nUS22: Unique IDs\n")
         outfile.write(US22)
+
+        outfile.write("\nUS31: List individuals over 30 and not married\n")
+        outfile.write(US31)
 
         outfile.write("\n\nUS29: List deceased\n")
         outfile.write(US29)
@@ -220,12 +226,13 @@ def Run_Tests(hParser):
     Tests.US14.Execute(hParser)
     Tests.US15.Execute(hParser)
     Tests.US16.Execute(hParser)
-    Tests.US17.Execute(hParser);
-    Tests.US18.Execute(hParser);
+    Tests.US17.Execute(hParser)
+    Tests.US18.Execute(hParser)
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
     Tests.US21.Execute(hParser)
     Tests.US22.Execute(hParser)
+    Tests.US31.Execute(hParser)
     Tests.US29.Execute(hParser)
     Tests.US30.Execute(hParser)
 
