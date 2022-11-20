@@ -46,8 +46,6 @@ def US30_Test(hParser):
                 US30_Problems.append(NewFailureEntry)
 
 
-
-
 def US30_DisplayResults(hParser):
 
     print ("");
@@ -61,7 +59,7 @@ def US30_DisplayResults(hParser):
 
     for i in US30_Problems:
 
-        dead_married_people = (i.hIndividual.name if i.hFamily.married == True and i.hIndividual.death == True else 1)
+        dead_married_people = (i.hIndividual.name if (i.hFamily.married == True and i.hIndividual.death == True) else 1)
         
         pt.add_row(
             [

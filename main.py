@@ -143,58 +143,64 @@ def main():
         outfile.write("\nDIVORCE BEFORE DEATH\n")
         outfile.write(divorce_before_death)
 
-        outfile.write("\nLESS THAN 150 YEARS OLD\n")
+        outfile.write("\n\nLESS THAN 150 YEARS OLD\n")
         outfile.write(LT_150)
 
-        outfile.write("\nBorn before marriage or after divorce\n")
+        outfile.write("\n\nBorn before marriage or after divorce\n")
         outfile.write(BIR_BF_MARR_AF_DIV)
 
-        outfile.write("\nBorn after death of parent(s)\n")
+        outfile.write("\n\nBorn after death of parent(s)\n")
         outfile.write(US09)
 
-        outfile.write("\nMarried before either spouse is 14\n")
+        outfile.write("\n\nMarried before either spouse is 14\n")
         outfile.write(US10)
 
-        outfile.write("\nNO BIGAMY\n")
+        outfile.write("\n\nNO BIGAMY\n")
         outfile.write(NO_BIGAMY)
 
-        outfile.write("\nPARENTS NOT TOO OLD\n")
+        outfile.write("\n\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
-        outfile.write("\nPARENTS NOT TOO OLD\n")
+        outfile.write("\n\nPARENTS NOT TOO OLD\n")
         outfile.write(PARENTS_NOT_TOO_OLD)
 
-        outfile.write("\nUS13: SIBLINGS SPACING\n")
+        outfile.write("\n\nUS13: SIBLINGS SPACING\n")
         outfile.write(US13)
 
-        outfile.write("\nUS14: Multiple Births > 5\n")
+        outfile.write("\n\nUS14: Multiple Births > 5\n")
         outfile.write(US14)
 
-        outfile.write("\nTOO MANY SIBLINGS\n")
+        outfile.write("\n\nTOO MANY SIBLINGS\n")
         outfile.write(TOO_MANY_SIBLINGS)
 
         # US17 - Not married to descendants
-        outfile.write("\nNOT MARRIED TO DESCENDANTS\n");
+        outfile.write("\n\nNOT MARRIED TO DESCENDANTS\n");
         outfile.write(NOT_MARRIED_TO_DESCENDANTS);
 
         # US18 - Siblings should not marry
-        outfile.write("\nSIBLINGS NOT MARRIED\n");
+        outfile.write("\n\nSIBLINGS NOT MARRIED\n");
         outfile.write(SIBLINGS_NOT_MARRIED);
 
-        outfile.write("\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
+        outfile.write("\n\nMALE FAMILY MEMBER DIFFERENT LAST NAMES\n")
         outfile.write(MALE_FAMILY_MEMBERS_DIFFERENT_LAST_NAME)
 
-        outfile.write("\nSAME NAME SAME BIRTHDATE\n")
+        outfile.write("\n\nSAME NAME SAME BIRTHDATE\n")
         outfile.write(SAME_NAME_SAME_BIRTH_DATE)
 
-        outfile.write("\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
+        outfile.write("\n\nSAME SPOUSE NAMES SAME MARRIAGE DATE\n")
         outfile.write(SAME_SPOUSE_NAMES_SAME_MARRIED_DATE)
 
-        outfile.write("\nUS21: Correct Gender for Role\n")
+        outfile.write("\n\n\nUS21: Correct Gender for Role\n")
         outfile.write(US21)
 
-        outfile.write("\nUS22: Unique IDs\n")
+        outfile.write("\n\nUS22: Unique IDs\n")
         outfile.write(US22)
+
+        outfile.write("\n\nUS29: List deceased\n")
+        outfile.write(US29)
+
+        outfile.write("\n\nUS30: List living married\n")
+        outfile.write(US30)
 
     Run_Tests(parser)
 
