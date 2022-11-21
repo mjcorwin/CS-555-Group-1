@@ -6,6 +6,7 @@ from gedcom.parser import Parser
 from gedcom import Tests
 
 INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input3.gedcom")
+#INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "US25.ged");
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
@@ -72,6 +73,9 @@ def main():
 
         # US22 - Unique IDs
         US22 = Tests.gedcom.Tests.US22.Execute(parser)
+
+        # US25 - Unique first names in families
+        US25 = Tests.gedcom.Tests.US25.Execute(parser);
 
         # US31 - List individuals over 30 and not married
         US31 = Tests.gedcom.Tests.US31.Execute(parser)
@@ -205,6 +209,9 @@ def main():
         outfile.write("\n\nUS22: Unique IDs\n")
         outfile.write(US22)
 
+        outfile.write("\n\nUS25: Unique first names in families\n")
+        outfile.write(US25);
+
         outfile.write("\nUS31: List individuals over 30 and not married\n")
         outfile.write(US31)
 
@@ -216,6 +223,7 @@ def main():
 
         outfile.write("\n\nUS30: List living married\n")
         outfile.write(US30)
+
 
     Run_Tests(parser)
 
@@ -239,6 +247,7 @@ def Run_Tests(hParser):
     Tests.US18.Execute(hParser)
     Tests.US23.Execute(hParser)
     Tests.US24.Execute(hParser)
+    Tests.US25.Execute(hParser);
     Tests.US21.Execute(hParser)
     Tests.US22.Execute(hParser)
     Tests.US31.Execute(hParser)
