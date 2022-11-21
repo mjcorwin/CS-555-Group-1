@@ -5,8 +5,8 @@ from gedcom.parser import Parser
 
 from gedcom import Tests
 
-#INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input3.gedcom")
-INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "US25.ged");
+INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "input3.gedcom")
+#INPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "US25.ged");
 OUTPUT_FILE_PATH = path.join(path.dirname(path.realpath(__file__)), "results.txt")
 
 
