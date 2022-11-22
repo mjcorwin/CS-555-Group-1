@@ -260,6 +260,8 @@ def US25_ex(Individuals, Families):
 
             US25_Problems.append(US25_Failure);
 
+    return US25_Problems
+
 
 
 def US25(hParser):

@@ -133,6 +133,8 @@ def US26_ex(Individuals, Families):
 
                 US26_Problems.append(US26_Failure);
 
+    return US26_Problems
+
 
 
 def US26(hParser):
