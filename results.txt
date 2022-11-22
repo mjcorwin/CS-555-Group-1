@@ -250,3 +250,12 @@ US30: List living married
 |     Joe /Smith/     | EUS30_FAILURE.US30_FAIL_DEAD_MARRIED_PEOPLE |
 |    Thomas /Smith/   | EUS30_FAILURE.US30_FAIL_DEAD_MARRIED_PEOPLE |
 +---------------------+---------------------------------------------+
+
+
+US25: Unique first names in families
++------+-----------------+---------------------------------------+------+-----------------+---------------------------------------+----------------------------------------------------------+
+| ID 1 |      Name 1     |           Familial status 1           | ID 2 |      Name 2     |           Familial status 2           |                       Failure type                       |
++------+-----------------+---------------------------------------+------+-----------------+---------------------------------------+----------------------------------------------------------+
+| @I5@ | Mark /Chambers/ |  EFAMILIALSTATUS.FAMILIALSTATUS_CHILD | @I2@ | Mark /Chambers/ | EFAMILIALSTATUS.FAMILIALSTATUS_FATHER | EUS25_FAILURE.US25_FAIL_CHILD_FNAME_MATCHES_FATHER_FNAME |
+| @I2@ | Mark /Chambers/ | EFAMILIALSTATUS.FAMILIALSTATUS_FATHER | @I5@ | Mark /Chambers/ |  EFAMILIALSTATUS.FAMILIALSTATUS_CHILD | EUS25_FAILURE.US25_FAIL_FATHER_FNAME_MATCHES_CHILD_FNAME |
++------+-----------------+---------------------------------------+------+-----------------+---------------------------------------+----------------------------------------------------------+
