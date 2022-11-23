@@ -44,6 +44,6 @@ def families():
 
 # Unique first names in families
 class TestUS25:
-    def test_individual_no_bigamy(self, individuals, families):
+    def test_unique_first_name_in_family(self, individuals, families):
         errors = US25.US25_ex(individuals, families)
         assert len(errors) == 0

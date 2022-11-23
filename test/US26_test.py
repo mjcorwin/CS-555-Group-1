@@ -44,6 +44,6 @@ def families():
 
 # Corresponding entries
 class TestUS26:
-    def test_individual_no_bigamy(self, individuals, families):
+    def test_individual_family_records(self, individuals, families):
         errors = US26.US26_ex(individuals, families)
         assert len(errors) == 0
