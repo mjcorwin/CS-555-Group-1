@@ -20,6 +20,8 @@ import gedcom.Tests.US23
 import gedcom.Tests.US24
 import gedcom.Tests.US25;
 import gedcom.Tests.US26;
+import gedcom.Tests.US27;
+import gedcom.Tests.US28;
 import gedcom.Tests.US31
 import gedcom.Tests.US32
 import gedcom.Tests.US29

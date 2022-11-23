@@ -80,6 +80,10 @@ def main():
         # US26 - Corresponding entries
         US26 = Tests.gedcom.Tests.US26.Execute(parser);
 
+        US27 = Tests.gedcom.Tests.US27.Execute(parser);
+
+        US28 = Tests.gedcom.Tests.US28.Execute(parser);
+
         # US31 - List individuals over 30 and not married
         US31 = Tests.gedcom.Tests.US31.Execute(parser)
 
@@ -139,6 +143,12 @@ def main():
 
         print("US32: List multiple births")
         print(US32)
+
+        print("US27: List current ages")
+        print(US27)
+
+        print('US28: Ages Ordered')
+        print(US28)
 
         print("US29: List deceased")
         print(US29)
@@ -217,6 +227,12 @@ def main():
 
         outfile.write("\n\nUS26: Corresponding entries\n")
         outfile.write(US26);
+
+        outfile.write("\n\nUS27: List Current Ages")
+        outfile.write(US27);
+
+        outfile.write("\n\nUS28: Ages Ordered")
+        outfile.write(US28)
 
         outfile.write("\nUS31: List individuals over 30 and not married\n")
         outfile.write(US31)
